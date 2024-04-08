@@ -1,11 +1,14 @@
 import type { Config } from 'tailwindcss';
 
+// Plugins:
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import twTypography from '@tailwindcss/typography';
 
 const config: Config = {
   darkMode: ['class'],
   content: ['./src/**/*.{html,js,svelte,ts}'],
   safelist: ['dark'],
+  plugins: [twTypography],
   theme: {
     container: {
       center: true,
@@ -17,7 +20,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['InterVariable', ...fontFamily.sans],
-		mono: ['GeistMono', ...fontFamily.mono]
+        mono: ['GeistMono', ...fontFamily.mono]
       },
       colors: {
         border: 'hsl(var(--border) / <alpha-value>)',
