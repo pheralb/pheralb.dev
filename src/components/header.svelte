@@ -25,7 +25,7 @@
   ];
 </script>
 
-<nav class="container mb-5 flex w-full max-w-3xl items-center justify-between">
+<nav class="container mb-5 flex w-full max-w-4xl items-center justify-between">
   <a
     href="/"
     class="text-md font-medium tracking-tight opacity-80 transition-opacity duration-150 hover:opacity-100"
