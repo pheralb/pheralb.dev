@@ -87,6 +87,6 @@
 
 @font-face {
   font-family: 'GeistMono';
-  src: url('/fonts/GeistMonoVariableVF.woff2') format('woff2');
+  src: url('/fonts/GeistMonoVF.woff2') format('woff2');
   font-display: swap;
 }
