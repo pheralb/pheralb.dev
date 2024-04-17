@@ -3,12 +3,13 @@ import type { Config } from 'tailwindcss';
 // Plugins:
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import twTypography from '@tailwindcss/typography';
+import twAnimate from 'tailwindcss-animate';
 
 const config: Config = {
   darkMode: ['class'],
   content: ['./src/**/*.{html,js,svelte,ts}'],
   safelist: ['dark'],
-  plugins: [twTypography],
+  plugins: [twTypography, twAnimate],
   theme: {
     container: {
       center: true,
