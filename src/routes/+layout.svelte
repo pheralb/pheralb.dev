@@ -11,7 +11,7 @@
 
 <ModeWatcher />
 
-<div class="relative flex min-h-screen flex-col py-10 md:pb-12">
+<div class="relative flex min-h-screen flex-col py-6 md:pb-12">
   <Header />
   <main class="container max-w-4xl flex-1">
     <slot />

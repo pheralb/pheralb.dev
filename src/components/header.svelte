@@ -25,12 +25,14 @@
   ];
 </script>
 
-<nav class="container mb-5 flex w-full max-w-4xl items-center justify-between">
+<nav
+  class="container sticky top-0 z-50 mb-1 flex w-full max-w-4xl items-center justify-between bg-neutral-100/80 py-4 backdrop-blur-md dark:bg-neutral-900/80"
+>
   <a
     href="/"
-    class="text-md font-medium tracking-tight opacity-80 transition-opacity duration-150 hover:opacity-100"
+    class="text-md flex items-center space-x-2 font-medium tracking-tight opacity-80 transition-opacity duration-150 hover:opacity-100"
   >
-    pheralb.dev
+    <span>pheralb.dev</span>
   </a>
   <div class="flex items-center space-x-1">
     {#each SocialLinks as { name, url, icon }, i}
