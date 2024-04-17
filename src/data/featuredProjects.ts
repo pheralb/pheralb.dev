@@ -1,18 +1,29 @@
+import type { ComponentType } from 'svelte';
+
+// Icons:
 import Nextjs from '@/icons/nextjs.svelte';
 import Remix from '@/icons/remix.svelte';
 import Svelteicon from '@/icons/svelteicon.svelte';
 import T3 from '@/icons/t3.svelte';
 import Tauri from '@/icons/tauri.svelte';
 import Trpc from '@/icons/trpc.svelte';
-import type { ComponentType } from 'svelte';
+import {
+  BoxIcon,
+  BoxSelectIcon,
+  ComponentIcon,
+  CrownIcon,
+  LinkIcon,
+  PenLineIcon
+} from 'lucide-svelte';
 
-interface iProjects {
+export interface iProjects {
   title: string;
   description: string;
   tags: string[];
   url?: string;
   githubUrl?: string;
   icon?: string;
+  lucideIcon: ComponentType;
   mainTech: iMainTech;
 }
 
@@ -22,7 +33,7 @@ interface iMainTech {
   svelteIcon: ComponentType;
 }
 
-export const projects: iProjects[] = [
+export const featuredProjects: iProjects[] = [
   {
     title: 'slug',
     description: '🌱 An open-source URL shortener.',
@@ -30,6 +41,7 @@ export const projects: iProjects[] = [
     url: 'https://slug.vercel.app/',
     githubUrl: 'https://github.com/pheralb/slug',
     icon: 'https://raw.githubusercontent.com/pheralb/slug/main/public/images/logo_svg.svg',
+    lucideIcon: LinkIcon,
     mainTech: {
       title: 'T3 Stack',
       url: 'https://t3.gg',
@@ -43,6 +55,7 @@ export const projects: iProjects[] = [
     url: 'https://svgl.app/',
     githubUrl: 'https://github.com/pheralb/svgl',
     icon: 'https://raw.githubusercontent.com/pheralb/svgl/main/static/images/logo.svg',
+    lucideIcon: BoxIcon,
     mainTech: {
       title: 'Sveltekit',
       url: 'https://kit.svelte.dev/',
@@ -55,6 +68,7 @@ export const projects: iProjects[] = [
     tags: ['Tauri', 'Turborepo', 'Tailwind', 'Tiptap'],
     githubUrl: 'https://github.com/pheralb/typethings',
     icon: 'https://raw.githubusercontent.com/pheralb/typethings/main/app/public/images/logo.svg',
+    lucideIcon: PenLineIcon,
     mainTech: {
       title: 'Tauri',
       url: 'https://tauri.app/',
@@ -68,6 +82,7 @@ export const projects: iProjects[] = [
     url: 'https://react-symbols.vercel.app/',
     githubUrl: 'https://github.com/pheralb/react-symbols',
     icon: 'https://raw.githubusercontent.com/pheralb/react-symbols/main/website/public/images/logo_svg.svg',
+    lucideIcon: ComponentIcon,
     mainTech: {
       title: 'Remix',
       url: 'https://remix.run/',
@@ -79,8 +94,9 @@ export const projects: iProjects[] = [
     description: '🌻 An open-source hackathon management.',
     tags: ['Next.js', 'Tailwind', 'tRPC', 'Prisma'],
     url: 'https://phck.vercel.app/',
-    githubUrl: 'https://github.com/pheralb/frame',
-    icon: 'https://raw.githubusercontent.com/pheralb/frame/main/public/images/logo_svg.svg',
+    githubUrl: 'https://github.com/pheralb/project-hackathon',
+    icon: 'https://raw.githubusercontent.com/pheralb/project-hackathon/main/public/images/phck.png',
+    lucideIcon: CrownIcon,
     mainTech: {
       title: 'tRPC',
       url: 'https://trpc.io/',
@@ -93,7 +109,8 @@ export const projects: iProjects[] = [
     tags: ['Next.js', 'Tailwind', 'Dropzone'],
     url: 'https://myframe.vercel.app/',
     githubUrl: 'https://github.com/pheralb/frame',
-    icon: 'https://raw.githubusercontent.com/pheralb/project-hackathon/main/public/images/phck.png',
+    icon: 'https://raw.githubusercontent.com/pheralb/frame/main/public/images/logo_svg.svg',
+    lucideIcon: BoxSelectIcon,
     mainTech: {
       title: 'Next.js',
       url: 'https://nextjs.org/',
