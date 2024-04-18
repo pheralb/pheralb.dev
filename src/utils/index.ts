@@ -14,6 +14,8 @@ type FlyAndScaleParams = {
   duration?: number;
 };
 
+type DateStyle = Intl.DateTimeFormatOptions['dateStyle'];
+
 export const flyAndScale = (
   node: Element,
   params: FlyAndScaleParams = { y: -8, x: 0, start: 0.95, duration: 150 }
@@ -54,3 +56,9 @@ export const flyAndScale = (
     easing: cubicOut
   };
 };
+
+export function formatDate(date: string, dateStyle: DateStyle = 'medium', locales = 'en') {
+  const dateToFormat = new Date(date.replaceAll('-', '/'));
+  const dateFormatter = new Intl.DateTimeFormat(locales, { dateStyle });
+  return dateFormatter.format(dateToFormat);
+}
