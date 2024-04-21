@@ -4,6 +4,7 @@
 
   import Input from '@/ui/input/input.svelte';
   import { ArrowUpRight, GitForkIcon, SearchIcon, StarIcon } from 'lucide-svelte';
+  import { routeAnimation } from '@/ui/shared';
 
   export let data: PageData;
 
@@ -19,7 +20,11 @@
   };
 </script>
 
-<main class="duration-500 animate-in fade-in-5 slide-in-from-bottom-3">
+<svelte:head>
+  <title>Projects</title>
+</svelte:head>
+
+<main class={routeAnimation}>
   <div class="relative mb-5">
     <SearchIcon
       class="absolute left-3 top-1/2 -translate-y-1/2 transform text-neutral-500 dark:text-neutral-400"

@@ -4,7 +4,7 @@
   import ProjectCard from './featuredProjectCard.svelte';
 </script>
 
-<section class="flex flex-col space-y-4 duration-700 animate-in fade-in-20 slide-in-from-bottom-6">
+<section class="flex flex-col space-y-4">
   <div class="flex w-full items-center justify-between">
     <h2 class="text-xl font-medium">Projects</h2>
     <a

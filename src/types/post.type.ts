@@ -3,5 +3,7 @@ export type Post = {
   slug: string;
   description: string;
   date: string;
+  category: string;
   published: boolean;
+  writing: boolean;
 };

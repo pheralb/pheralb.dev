@@ -3,7 +3,7 @@
   import { ArrowUpRight } from 'lucide-svelte';
 </script>
 
-<section class="flex flex-col space-y-4 duration-700 animate-in fade-in-20 slide-in-from-bottom-6">
+<section class="flex flex-col space-y-4">
   <div class="flex flex-col space-y-4">
     <h2 class="text-xl font-medium">Experience</h2>
   </div>
