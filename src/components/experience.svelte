@@ -1,31 +1,46 @@
 <script>
   import { experienceData } from '@/data/experience';
-  import { ArrowUpRight } from 'lucide-svelte';
+  import { cn } from '@/utils';
+  import { ArrowUpRight, Building2Icon, BuildingIcon } from 'lucide-svelte';
 </script>
 
 <section class="flex flex-col space-y-4">
   <div class="flex flex-col space-y-4">
     <h2 class="text-xl font-medium">Experience</h2>
   </div>
-  {#each experienceData as experience}
-    <div class="w-full rounded-md border border-neutral-300 p-3 dark:border-neutral-800">
-      <div class="flex items-center space-x-3">
-        <div class="flex flex-col space-y-1 w-full">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-medium">{experience.role}</h3>
-            <p class="font-mono text-sm text-neutral-500 dark:text-neutral-400">
-              {experience.startDate} - {experience.endDate}
-            </p>
-          </div>
-          <a href="google.com" class="flex items-center space-x-1 w-auto">
-            <span class="text-sm text-neutral-500 dark:text-neutral-400">{experience.company}</span>
-            <ArrowUpRight size="14" strokeWidth="1.5" />
+
+  <ol class="relative space-y-6 border-s-2 border-neutral-300 dark:border-neutral-800">
+    {#each experienceData as experience}
+      <li class="ms-5 mt-1">
+        <div
+          class={cn(
+            'absolute -start-[6.5px] mt-2 h-3 w-3 rounded-full border border-neutral-400 bg-neutral-200 dark:border-neutral-600 dark:bg-neutral-800',
+            experience.latest ? 'animate-pulse' : ''
+          )}
+        ></div>
+        <time
+          class="mb-2 font-mono text-xs font-normal leading-none text-neutral-600 dark:text-neutral-400"
+        >
+          {experience.startDate} - {experience.endDate}
+        </time>
+        <div class="mt-2 flex flex-col space-y-0.5">
+          <h3 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
+            {experience.role}
+          </h3>
+          <a
+            href={experience.companyUrl}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center text-pretty text-sm text-neutral-600 transition-colors duration-150 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white group"
+          >
+            <span>{experience.company}</span>
+            <ArrowUpRight class="ml-1 group-hover:translate-x-[1.5px] duration-150" size={12} strokeWidth={1.5} />
           </a>
         </div>
-      </div>
-      <p class="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
-        {experience.aboutRole}
-      </p>
-    </div>
-  {/each}
+        <p class="mt-3 text-pretty text-sm dark:text-neutral-400">
+          {experience.aboutRole}
+        </p>
+      </li>
+    {/each}
+  </ol>
 </section>

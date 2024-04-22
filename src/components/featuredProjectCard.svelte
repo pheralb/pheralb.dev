@@ -2,7 +2,7 @@
   import type { ComponentType } from 'svelte';
   import { ArrowUpRight } from 'lucide-svelte';
   import Github from '@/icons/github.svelte';
-    import Badge from '@/ui/badge/badge.svelte';
+  import Badge from '@/ui/badge/badge.svelte';
 
   let div: HTMLDivElement;
   let focused = false;
@@ -76,13 +76,13 @@
             href={websiteUrl}
             target="_blank"
             rel="noopener"
-            class="group flex items-center gap-2 font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] hover:underline"
+            class="group flex items-center gap-[6px] font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] hover:underline"
           >
             <span>{title}</span>
             <ArrowUpRight
-              size={14}
+              size={13}
               strokeWidth={2}
-              class="opacity-70 group-hover:opacity-100 group-hover:duration-75"
+              class="opacity-50 group-hover:opacity-100 group-hover:translate-x-[1.5px] duration-200"
             />
           </a>
         {:else}
@@ -94,6 +94,7 @@
       </div>
       <a
         href={githubUrl}
+        title={`View ${title} repository on GitHub`}
         target="_blank"
         rel="noopener"
         class="opacity-75 transition-opacity duration-100 hover:opacity-100"
@@ -102,7 +103,7 @@
       </a>
     </div>
     <p class="truncate text-sm dark:text-neutral-400">{description}</p>
-    <div class="flex items-center">
+    <div class="hidden items-center space-x-2 overflow-x-auto md:flex">
       {#if mainTechIcon}
         <a href={mainTechUrl} target="_blank" rel="noopener" class="mr-1" title={mainTechName}>
           <svelte:component this={mainTechIcon} height={17} />
