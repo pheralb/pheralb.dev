@@ -14,8 +14,7 @@
       <li class="ms-5 mt-1">
         <div
           class={cn(
-            'absolute -start-[6.5px] mt-2 h-3 w-3 rounded-full border border-neutral-400 bg-neutral-200 dark:border-neutral-600 dark:bg-neutral-800',
-            experience.latest ? 'animate-pulse' : ''
+            'absolute -start-[6.5px] mt-2 h-3 w-3 rounded-full border border-neutral-400 bg-neutral-200 dark:border-neutral-600 dark:bg-neutral-800'
           )}
         ></div>
         <time
