@@ -31,10 +31,14 @@
             href={experience.companyUrl}
             target="_blank"
             rel="noopener"
-            class="flex items-center text-pretty text-sm text-neutral-600 transition-colors duration-150 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white group"
+            class="group flex w-max items-center text-pretty text-sm text-neutral-600 transition-colors duration-150 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white"
           >
             <span>{experience.company}</span>
-            <ArrowUpRight class="ml-1 group-hover:translate-x-[1.5px] duration-150" size={12} strokeWidth={1.5} />
+            <ArrowUpRight
+              class="ml-1 duration-150 group-hover:translate-x-[1.5px]"
+              size={12}
+              strokeWidth={1.5}
+            />
           </a>
         </div>
         <p class="mt-3 text-pretty text-sm dark:text-neutral-400">

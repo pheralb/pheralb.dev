@@ -36,7 +36,7 @@
     </div>
     <a
       href={`https://github.com/pheralb/pheralb.dev/blob/main/src/posts/${data.slug}.md`}
-      class="flex items-center space-x-1 text-neutral-800 transition-colors duration-200 ease-in-out hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+      class="flex items-center space-x-1 text-neutral-600 transition-colors duration-200 ease-in-out hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -55,8 +55,11 @@
   <article
     class={cn(
       'py-5',
-      'prose prose-quoteless w-full max-w-full text-pretty dark:prose-invert',
-      'prose-headings:font-medium'
+      'prose prose-neutral prose-quoteless w-full max-w-full text-pretty dark:prose-invert',
+      'prose-headings:font-medium prose-h2:tracking-tight',
+      'prose-a:decoration-neutral-400 prose-a:decoration-dotted prose-a:decoration-[1.5px] prose-a:underline-offset-[6px] hover:prose-a:opacity-80 dark:prose-a:decoration-neutral-400',
+      'prose-pre:my-3',
+      'prose-ol:mb-3 prose-ul:mb-3'
     )}
   >
     <svelte:component this={data.content} />
