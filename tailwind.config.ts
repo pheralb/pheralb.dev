@@ -19,17 +19,30 @@ const config: Config = {
       }
     },
     extend: {
-      fontFamily: {
-        sans: ['InterVariable', ...fontFamily.sans],
-        mono: ['GeistMono', ...fontFamily.mono]
-      },
       typography: {
+        default: {
+          css: {
+            code: {
+              '&::before': {
+                display: 'none'
+              },
+              '&::after': {
+                display: 'none'
+              }
+            }
+          }
+        },
         quoteless: {
           css: {
             'blockquote p:first-of-type::before': { content: 'none' },
             'blockquote p:first-of-type::after': { content: 'none' }
           }
         }
+      },
+      fontFamily: {
+        sans: ['InterVariable', ...fontFamily.sans],
+        mono: ['GeistMono', ...fontFamily.mono],
+        gambarino: ['Gambarino', ...fontFamily.sans]
       }
     }
   }

@@ -17,3 +17,10 @@
   src: url('/fonts/GeistMonoVF.woff2') format('woff2');
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Gambarino';
+  src: url('/fonts/Gambarino-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
