@@ -14,7 +14,7 @@
         Stack
     </a>
     <span>&nbsp;⁘&nbsp;</span>
-    <a href="https://github.com/pheralb/pheralb.dev?tab=readme-ov-file#-getting-started">
+    <a href="https://github.com/pheralb/pheralb.dev?tab=readme-ov-file#-contributing">
         Contribute
     </a>
     <span>&nbsp;⁘&nbsp;</span>
@@ -48,7 +48,7 @@
 - [**bits-ui**](https://www.bits-ui.com) - A collection of headless components for Svelte.
 - [**clsx**](https://github.com/lukeed/clsx) + [**tailwind-variants**](https://www.tailwind-variants.org/) - The power of Tailwind combined with a first-class variant API.
 - [**Prettier**](https://prettier.io/) + [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter.
-- [**Lucide Icons**](https://lucide.dev/) + [**phosphor-svelte**](https://github.com/haruaki07/phosphor-svelte) - A clean and friendly icons libraries.
+- [**Lucide Icons**](https://lucide.dev/) + [**svgl**](https://svgl.app/) - Beautifully SVGs icons & logos.
 
 ## 🚀 Contributing
 
