@@ -24,8 +24,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
     name: repo.name,
     description: repo.description,
     topics: repo.topics.slice(0, 5),
-    url: repo.html_url,
-    githubUrl: repo.html_url,
+    html_url: repo.html_url,
     icon: repo.language,
     stargazers_count: repo.stargazers_count
   }));

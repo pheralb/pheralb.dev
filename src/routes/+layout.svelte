@@ -19,9 +19,11 @@
   <div class="container max-w-4xl flex-1">
     <slot />
   </div>
-  <footer class="container mt-10 flex max-w-4xl items-center justify-between">
+  <footer
+    class="container mt-10 flex max-w-4xl flex-col items-center justify-center space-y-1 md:flex-row md:justify-between md:space-y-0"
+  >
     <p class="font-gambarino">✨ Building amazing things</p>
-    <div class="flex items-center space-x-1">
+    <div class="flex items-center space-x-1 text-sm md:text-md">
       <h2>Pablo Hernández</h2>
       <span class="text-gray-500 dark:text-gray-400">-</span>
       <p>{currentYear}</p>

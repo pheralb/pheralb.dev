@@ -3,7 +3,7 @@
   import type { PageData } from './$types';
 
   import Input from '@/ui/input/input.svelte';
-  import { ArrowUpRight, GitForkIcon, SearchIcon, StarIcon } from 'lucide-svelte';
+  import { ArrowRight, ArrowUpRight, GitForkIcon, SearchIcon, StarIcon } from 'lucide-svelte';
   import { routeAnimation } from '@/ui/shared';
 
   export let data: PageData;
@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-  <title>Projects</title>
+  <title>Repositories - Pablo Hernández</title>
 </svelte:head>
 
 <main class={routeAnimation}>
@@ -52,12 +52,16 @@
     </div>
     <a
       href="https://github.com/pheralb?tab=repositories"
-      class="flex items-center space-x-1"
+      class="group flex items-center space-x-1"
       target="_blank"
       rel="noopener noreferrer"
     >
       <span class="font-mono text-xs"> View on GitHub </span>
-      <ArrowUpRight size={14} strokeWidth={1.5} />
+      <ArrowUpRight
+        size={14}
+        strokeWidth={1.5}
+        class="opacity-70 duration-200 group-hover:translate-x-[1.3px] group-hover:opacity-100"
+      />
     </a>
   </div>
   <div class="flex flex-col space-y-3">
@@ -65,27 +69,38 @@
       <div
         class="flex flex-col space-y-2 rounded-md border border-neutral-300 p-3 dark:border-neutral-800"
       >
-        <a
-          href={item.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-medium text-neutral-900 dark:text-neutral-100"
-        >
-          {item.name}
-        </a>
-        <p class="text-sm text-neutral-500 dark:text-neutral-400">{item.description}</p>
         <div class="flex w-full items-center justify-between">
-          <div class="flex items-center space-x-2">
-            {#each item.topics as tag}
-              <Badge>
-                {tag}
-              </Badge>
-            {/each}
-          </div>
-          <div class="flex items-center space-x-2">
-            <StarIcon size={14} strokeWidth={1.5} />
-            <p class="font-mono text-sm">{item.stargazers_count}</p>
-          </div>
+          <a
+            href={item.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center space-x-2 font-medium duration-100 hover:opacity-80"
+          >
+            <span>{item.name}</span>
+            <ArrowUpRight
+              size={12}
+              strokeWidth={1.5}
+              class="opacity-70 duration-200 group-hover:translate-x-[1.3px] group-hover:opacity-100"
+            />
+          </a>
+          <span
+            class="group flex cursor-default items-center space-x-2 text-neutral-600 dark:text-neutral-400"
+          >
+            <StarIcon
+              size={14}
+              strokeWidth={1.5}
+              class="duration-200 group-hover:text-yellow-600"
+            />
+            <p class="font-mono text-xs">{item.stargazers_count}</p>
+          </span>
+        </div>
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">{item.description}</p>
+        <div class="flex items-center space-x-2 overflow-y-auto">
+          {#each item.topics as tag}
+            <Badge>
+              {tag}
+            </Badge>
+          {/each}
         </div>
       </div>
     {/each}

@@ -7,16 +7,16 @@
   export let data;
 </script>
 
-<!-- SEO -->
 <svelte:head>
-  <title>{data.meta.title}</title>
+  <title>{data.meta.title} - Pablo Hernández</title>
   <meta property="og:type" content="article" />
-  <meta property="og:title" content={data.meta.title} />
+  <meta property="og:title" content={`${data.meta.title} - Pablo Hernández`} />
+  <meta property="og:description" content={data.meta.description} />
 </svelte:head>
 
 <main class={cn('flex flex-col space-y-5', routeAnimation)}>
   <div class="mt-7 flex flex-col space-y-2">
-    <h2 class="text-4xl font-medium tracking-tighter">
+    <h2 class="text-3xl md:text-4xl font-medium tracking-tighter">
       {data.meta.title}
     </h2>
     <p class="text-neutral-800 dark:text-neutral-400">{data.meta.description}</p>
