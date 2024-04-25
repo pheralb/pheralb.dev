@@ -11,6 +11,10 @@
   export let data;
 </script>
 
+<svelte:head>
+  <title>Pablo Hernández - pheralb.dev</title>
+</svelte:head>
+
 <div class={cn('grid items-center gap-14 py-4 md:py-4', routeAnimation)}>
   <About />
   <Projects />
