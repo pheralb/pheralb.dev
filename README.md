@@ -1,38 +1,77 @@
-# create-svelte
+<div align="center">
+<a href="https://pheralb.dev">
+<img src="static/images/readme_img_space.png">
+</a>
+<p></p>
+</div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+<div align="center">
+    <a href="https://pheralb.dev" target="_blank">
+        Website
+    </a>
+    <span>&nbsp;⁘&nbsp;</span>
+    <a href="https://github.com/pheralb/pheralb.dev?tab=readme-ov-file#-stack">
+        Stack
+    </a>
+    <span>&nbsp;⁘&nbsp;</span>
+    <a href="https://github.com/pheralb/pheralb.dev?tab=readme-ov-file#-getting-started">
+        Contribute
+    </a>
+    <span>&nbsp;⁘&nbsp;</span>
+    <a href="https://pheralb.dev/tw">
+        X (formerly Twitter)
+    </a>
+</div>
 
-## Creating a project
+</p>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<div align="center">
+
+![Svelte Badge](https://img.shields.io/badge/Sveltekit-FF3E00?logo=svelte&logoColor=fff&style=flat)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Fpheralb.dev%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/pheralb.dev/goto?ref=main)
+![GitHub stars](https://img.shields.io/github/stars/pheralb/pheralb.dev)
+![GitHub issues](https://img.shields.io/github/issues/pheralb/pheralb.dev)
+![GitHub forks](https://img.shields.io/github/forks/pheralb/pheralb.dev)
+![GitHub PRs](https://img.shields.io/github/issues-pr/pheralb/pheralb.dev)
+![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
+
+</div>
+
+
+## 📦 Stack
+
+- [**Sveltekit**](https://kit.svelte.dev/) - Web development, streamlined.
+- [**Typescript**](https://www.typescriptlang.org/) - JavaScript with syntax for types.
+- [**mdsvex**](https://mdsvex.com/) - Markdown for Svelte apps.
+- [**Shiki**](https://github.com/shikijs/shiki) - A beautiful Syntax Highlighter.
+- [**Tailwindcss**](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
+- [**bits-ui**](https://www.bits-ui.com) - A collection of headless components for Svelte.
+- [**clsx**](https://github.com/lukeed/clsx) + [**tailwind-variants**](https://www.tailwind-variants.org/) - The power of Tailwind combined with a first-class variant API.
+- [**Prettier**](https://prettier.io/) + [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter.
+- [**Lucide Icons**](https://lucide.dev/) + [**phosphor-svelte**](https://github.com/haruaki07/phosphor-svelte) - A clean and friendly icons libraries.
+
+## 🚀 Contributing
+
+1. [Fork](https://github.com/pheralb/pheralb.dev/fork) the repository.
+
+2. Install dependencies:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+# Install pnpm globally if you don't have it:
+npm install -g pnpm
 
-# create a new project in my-app
-npm create svelte@latest my-app
+# and install dependencies:
+pnpm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+3. Run the development server:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev
 ```
 
-## Building
+Open up [http://localhost:5173](http://localhost:5173) and make your changes ✨.
 
-To create a production version of your app:
+## 📄 License
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- [**Apache-2.0 license**](https://github.com/pheralb/pheralb.dev?tab=Apache-2.0-1-ov-file#readme).
