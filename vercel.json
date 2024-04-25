@@ -16,6 +16,10 @@
       "destination": "https://twitter.com/pheralb_"
     },
     {
+      "source": "/x",
+      "destination": "https://twitter.com/pheralb_"
+    },
+    {
       "source": "/tv",
       "destination": "https://www.twitch.tv/pheralb"
     },
