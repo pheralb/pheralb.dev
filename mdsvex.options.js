@@ -4,6 +4,7 @@ import { getHighlighter } from 'shiki';
 // Rehype Plugins:
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeToc from '@jsdevtools/rehype-toc';
 import urls from 'rehype-urls';
 
 function processUrl(url, node) {
@@ -16,20 +17,48 @@ function processUrl(url, node) {
   }
 }
 
+const customizeTOC = (toc) => {
+  try {
+    const { children } = toc;
+    const childrenOfChildren = children?.[0]?.children;
+    if (!children?.length || !childrenOfChildren?.length) return null;
+  } catch (e) { /* empty */ }
+  return {
+    type: 'element',
+    tagName: 'div',
+    properties: { className: 'mb-4 border-b border-neutral-300 dark:border-neutral-800' },
+    children: [
+      {
+        type: 'element',
+        tagName: 'span',
+        properties: { className: 'mt-0 mb-0 font-medium tracking-tight' },
+        children: [
+          {
+            type: 'text',
+            value: 'Table of Contents:',
+          },
+        ],
+      },
+      ...(toc.children || []),
+    ],
+  };
+};
+
+
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
   extensions: ['.md'],
   layout: {
     _: './src/components/mdsvex/md-components.svelte'
   },
-  rehypePlugins: [[urls, processUrl], rehypeSlug, rehypeAutolinkHeadings],
+  rehypePlugins: [[urls, processUrl], rehypeSlug, rehypeAutolinkHeadings, [rehypeToc, { customizeTOC }]],
   highlight: {
     highlighter: async (code, lang = 'text') => {
       const highlighter = await getHighlighter({
         themes: ['slack-ochin', 'poimandres'],
-        langs: ['javascript', 'typescript', 'bash', 'json']
+        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css']
       });
-      await highlighter.loadLanguage('javascript', 'typescript', 'bash', 'json');
+      await highlighter.loadLanguage('javascript', 'typescript', 'bash', 'json', 'jsx', 'css');
       const html = escapeSvelte(
         highlighter.codeToHtml(code, {
           lang,
