@@ -56,9 +56,9 @@ export const mdsvexOptions = {
     highlighter: async (code, lang = 'text') => {
       const highlighter = await getHighlighter({
         themes: ['slack-ochin', 'poimandres'],
-        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css']
+        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx']
       });
-      await highlighter.loadLanguage('javascript', 'typescript', 'bash', 'json', 'jsx', 'css');
+      await highlighter.loadLanguage('javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx');
       const html = escapeSvelte(
         highlighter.codeToHtml(code, {
           lang,
