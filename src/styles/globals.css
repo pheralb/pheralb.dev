@@ -24,3 +24,7 @@
   font-weight: 400;
   font-display: swap;
 }
+
+.toc-level {
+  padding-bottom: 6px;
+}

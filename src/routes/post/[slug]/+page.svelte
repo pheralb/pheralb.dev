@@ -54,7 +54,7 @@
   {/if}
   <article
     class={cn(
-      'py-5',
+      'pb-5',
       'prose prose-neutral prose-quoteless w-full max-w-full text-pretty dark:prose-invert',
       'prose-headings:font-medium prose-h2:tracking-tight',
       'prose-a:decoration-neutral-400 prose-a:decoration-dotted prose-a:decoration-[1.5px] prose-a:underline-offset-[6px] hover:prose-a:opacity-80 dark:prose-a:decoration-neutral-400',
