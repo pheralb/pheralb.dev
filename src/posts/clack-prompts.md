@@ -3,7 +3,7 @@ title: How to create a cli with clack
 description: Learn how to create a beautiful CLI to generate projects with custom templates using clack/prompts & Typescript.
 date: '2024-4-21'
 category: 'Tutorial'
-writing: true
+writing: false
 published: true
 ---
 
