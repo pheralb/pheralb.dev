@@ -1,7 +1,7 @@
 ---
 title: Remix v2 Snippets
 description: Code snippets for Remix.
-date: '2024-4-28'
+date: '2024-5-28'
 category: 'Snippets'
 writing: false
 published: true
@@ -113,4 +113,119 @@ module.exports = {
 };
 ```
 
-Ready 🚀✨
+## Dark mode with Tailwind CSS
+
+1. Install [**remix-themes**](https://github.com/abereghici/remix-themes) and [**clsx**](https://github.com/lukeed/clsx#readme):
+
+```bash
+pnpm i remix-themes clsx -E
+```
+
+2. Enable `darkMode` option in the `tailwind.config.ts` file:
+
+```ts
+const config = {
+  darkMode: ['class'],
+  //...
+} satisfies Config;
+```
+
+3. Create a `session.server.tsx` file in /app folder with the following content:
+
+```tsx
+import { createCookieSessionStorage } from '@remix-run/node'; //
+import { createThemeSessionResolver } from 'remix-themes';
+
+// You can default to 'development' if process.env.NODE_ENV is not set:
+const isProduction = process.env.NODE_ENV === 'production';
+
+const sessionStorage = createCookieSessionStorage({
+  cookie: {
+    name: 'website-theme', // 👈 Cookie name.
+    path: '/',
+    httpOnly: true,
+    sameSite: 'lax',
+    secrets: ['s3cr3t'],
+    ...(isProduction ? { domain: 'my-website.com', secure: true } : {}), // 👈 Website URL.
+  },
+});
+
+export const themeSessionResolver = createThemeSessionResolver(sessionStorage);
+```
+
+4. In `app/routes` folder, create a `action.set-theme.ts` file with the following content:
+
+```ts
+import { createThemeAction } from 'remix-themes';
+import { themeSessionResolver } from '@/sessions.server'; // 👈 Import your session.server.tsx.
+
+export const action = createThemeAction(themeSessionResolver);
+```
+
+5. In `app/routes/root.tsx`...
+
+- ☁️ Use the loader to get the theme from server-side:
+
+```tsx
+import type { LoaderFunctionArgs } from '@remix/node';
+import { themeSessionResolver } from './sessions.server';
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const { getTheme } = await themeSessionResolver(request);
+  return {
+    theme: getTheme(),
+  };
+}
+```
+
+- 📦 Wrap the entire app using `ThemeProvider`:
+
+```tsx
+import { ThemeProvider } from 'remix-themes';
+import { useLoaderData } from '@remix-run/react';
+
+export default function AppWithProviders() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
+      <App />
+    </ThemeProvider>
+  );
+}
+
+function App() {
+    return (
+        <html lang="en">
+            <!-- ... -->
+        </html>
+    );
+}
+```
+
+- ✨ In your `<App />` component, use the `useTheme` hook:
+
+```tsx
+import { useLoaderData } from '@remix-run/react';
+import { PreventFlashOnWrongTheme, useTheme } from 'remix-themes';
+import clsx from 'clsx';
+
+function App() {
+  const data = useLoaderData<typeof loader>();
+  const [theme] = useTheme();
+  return (
+    <html lang="en" className={clsx(theme)}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
+        <Links />
+      </head>
+      <body className="bg-white text-black dark:bg-black dark:text-white">
+        <Outlet />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
