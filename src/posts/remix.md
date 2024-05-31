@@ -229,3 +229,26 @@ function App() {
   );
 }
 ```
+
+6. Create a simple `theme-toggle.tsx` component:
+
+```tsx
+import { Moon, Sun } from 'lucide-react'; // 🥹 Icons from lucide.dev
+import { Theme, useTheme } from 'remix-themes';
+
+export function ModeToggle() {
+  const [theme, setTheme] = useTheme();
+  return (
+    <>
+      <button onClick={() => setTheme(Theme.LIGHT)}>
+        <Sun size={22} strokeWidth={1.4} />
+        <span>Light Theme</span>
+      </button>
+      <button onClick={() => setTheme(Theme.DARK)}>
+        <Moon size={22} strokeWidth={1.4} />
+        <span>Dark Theme</span>
+      </button>
+    </>
+  );
+}
+```
