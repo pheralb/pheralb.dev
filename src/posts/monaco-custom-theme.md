@@ -1,6 +1,6 @@
 ---
-title: Add a custom theme to @monaco-editor/react
-description: How to add a custom Visual Studio Code theme to Monaco Editor for React.
+title: Add a custom theme to Monaco Editor for React
+description: How to add a custom Visual Studio Code theme to Monaco Editor for React and custom snippets.
 date: '2024-5-31'
 category: 'Tutorial'
 writing: false
@@ -78,28 +78,82 @@ In our case, we will add [**One Dark Pro**](https://binaryify.github.io/OneDark-
 Create inside the editor component where you have the `<Editor />`, a function to be executed before the editor starts (`beforeMount`):
 
 ```tsx
-import { Editor, type Monaco } from "@monaco-editor/react";
-import OneDarkPro from "./theme/onedarkpro.json";
+import { Editor, type Monaco } from '@monaco-editor/react';
+import OneDarkPro from './theme/onedarkpro.json';
 
 const MyMonacoEditor = () => {
-
   const handleEditorDidMount = (monaco: Monaco) => {
-    monaco.editor.defineTheme("OneDarkPro", {
-      base: "vs-dark",
+    monaco.editor.defineTheme('OneDarkPro', {
+      base: 'vs-dark',
       inherit: true,
-      ...OneDarkPro,
+      ...OneDarkPro
     });
   };
 
   return (
-    <Editor
-      width="100%"
-      height="100vh"
-      theme="OneDarkPro"
-      beforeMount={handleEditorDidMount}
-    />
+    <Editor width="100%" height="100vh" theme="OneDarkPro" beforeMount={handleEditorDidMount} />
   );
 };
 
 export default MyMonacoEditor;
+```
+
+## Snippets
+
+- Add custom code font, font size, bracket pair colorization, word wrap, activate/disable minimap, cursor blinking, and format on paste:
+
+```tsx
+<Editor
+  options={{
+    fontSize: 14,
+    fontFamily: 'Jetbrains-Mono',
+    fontLigatures: true,
+    wordWrap: 'on',
+    minimap: {
+      enabled: false
+    },
+    bracketPairColorization: {
+      enabled: true
+    },
+    cursorBlinking: 'expand',
+    formatOnPaste: true,
+    suggest: {
+      showFields: false,
+      showFunctions: false
+    }
+  }}
+/>
+```
+
+- Disable TypeScript checking in the editor:
+
+```ts
+const handleEditorDidMount = (monaco: Monaco) => {
+  monaco.editor.defineTheme('OneDarkPro', {
+    base: 'vs-dark',
+    inherit: true,
+    ...OneDarkPro
+  });
+  // 👇
+  monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+    noSemanticValidation: true,
+    noSyntaxValidation: true
+  });
+};
+```
+
+- Add **tsx** (React + Typescript) support:
+
+```ts
+const handleEditorDidMount = (monaco: Monaco) => {
+  monaco.editor.defineTheme('OneDarkPro', {
+    base: 'vs-dark',
+    inherit: true,
+    ...OneDarkPro
+  });
+  // 👇
+  monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+    tsx: 'react'
+  });
+};
 ```
