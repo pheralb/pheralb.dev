@@ -1,7 +1,8 @@
 import type { Config } from 'tailwindcss';
 
 // Plugins:
-import { fontFamily } from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
+import defaultTheme from 'tailwindcss/defaultTheme';
 import twTypography from '@tailwindcss/typography';
 import twAnimate from 'tailwindcss-animate';
 
@@ -9,7 +10,16 @@ const config: Config = {
   darkMode: ['class'],
   content: ['./src/**/*.{html,js,svelte,ts}'],
   safelist: ['dark'],
-  plugins: [twTypography, twAnimate],
+  plugins: [
+    twTypography,
+    twAnimate,
+    plugin(function ({ addVariant }) {
+      addVariant(
+        'prose-inline-code',
+        '&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))'
+      );
+    })
+  ],
   theme: {
     container: {
       center: true,
@@ -20,15 +30,13 @@ const config: Config = {
     },
     extend: {
       typography: {
-        default: {
+        DEFAULT: {
           css: {
-            code: {
-              '&::before': {
-                display: 'none'
-              },
-              '&::after': {
-                display: 'none'
-              }
+            'code::before': {
+              content: '""'
+            },
+            'code::after': {
+              content: '""'
             }
           }
         },
@@ -40,9 +48,9 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ['InterVariable', ...fontFamily.sans],
-        mono: ['GeistMono', ...fontFamily.mono],
-        gambarino: ['Gambarino', ...fontFamily.sans]
+        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        mono: ['GeistMono', ...defaultTheme.fontFamily.mono],
+        gambarino: ['Gambarino', ...defaultTheme.fontFamily.sans]
       }
     }
   }

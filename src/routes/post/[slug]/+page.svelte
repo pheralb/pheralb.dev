@@ -16,7 +16,7 @@
 
 <main class={cn('flex flex-col space-y-5', routeAnimation)}>
   <div class="mt-7 flex flex-col space-y-2">
-    <h2 class="text-3xl md:text-4xl font-medium tracking-tighter">
+    <h2 class="text-3xl font-medium tracking-tighter md:text-4xl">
       {data.meta.title}
     </h2>
     <p class="text-neutral-800 dark:text-neutral-400">{data.meta.description}</p>
@@ -59,7 +59,8 @@
       'prose-headings:font-medium prose-h2:tracking-tight',
       'prose-a:decoration-neutral-400 prose-a:decoration-dotted prose-a:decoration-[1.5px] prose-a:underline-offset-[6px] hover:prose-a:opacity-80 dark:prose-a:decoration-neutral-400',
       'prose-pre:my-3',
-      'prose-ol:mb-3 prose-ul:mb-3'
+      'prose-ol:mb-3 prose-ul:mb-3',
+      'prose-inline-code:rounded prose-inline-code:font-mono prose-inline-code:p-[2px] prose-inline-code:border prose-inline-code:border-neutral-300 prose-inline-code:bg-neutral-200/50 prose-inline-code:dark:border-neutral-800 prose-inline-code:dark:bg-neutral-800/50'
     )}
   >
     <svelte:component this={data.content} />
