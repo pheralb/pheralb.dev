@@ -13,7 +13,7 @@
       <div class="mb-3 flex flex-col space-y-1">
         <a
           href={`/post/${post.slug}`}
-          class="w-max text-lg font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] duration-150 hover:underline hover:opacity-80"
+          class="text-md md:text-lg font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] duration-150 hover:underline hover:opacity-80"
         >
           {post.title}
         </a>
