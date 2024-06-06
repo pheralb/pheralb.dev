@@ -7,7 +7,7 @@ writing: false
 published: true
 ---
 
-## Import styles
+## Import any CSS styles
 
 If you're using Remix with **Vite**, you can import styles like this:
 
@@ -49,6 +49,54 @@ A guide for managing routes in Remix v2:
 ```
 
 - 💡 To obtain the *$username*: [remix.run/docs/en/main/route/loader#params](https://remix.run/docs/en/main/route/loader#params)
+
+## How to use Remix on Vercel
+
+1. Install ``@vercel/remix`` package:
+
+```bash
+pnpm i @vercel/remix -E
+```
+
+2. Add Vercel Vite Preset to your `vite.config.ts`:
+
+```ts
+import { vitePlugin as remix } from "@remix-run/dev";
+import { defineConfig } from "vite";
+
+// Plugins:
+import tsconfigPaths from "vite-tsconfig-paths";
+import { vercelPreset } from "@vercel/remix/vite"; // 👈
+
+export default defineConfig({
+  plugins: [
+    remix({
+      presets: [vercelPreset()], // 👈
+      future: {
+        v3_fetcherPersist: true,
+        v3_relativeSplatPath: true,
+        v3_throwAbortReason: true,
+      },
+    }),
+    tsconfigPaths(),
+  ],
+});
+```
+
+3. Replace all ``@remix-run/node`` imports with ``@vercel/remix``. Example:
+
+```tsx
+import type { MetaFunction } from "@vercel/remix";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "New Remix App" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
+```
+
+- 💡 Check [``@vercel/remix`` documentation](https://vercel.com/docs/frameworks/remix).
 
 ## Install & configure Tailwind CSS with Prettier
 
