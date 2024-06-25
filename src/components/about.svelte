@@ -1,5 +1,5 @@
 <section
-  class="prose dark:prose-invert prose-a:font-normal prose-a:decoration-neutral-500 prose-a:decoration-dotted prose-a:underline-offset-[5px] prose-a:opacity-80"
+  class="prose dark:prose-invert prose-a:font-normal prose-a:decoration-neutral-500 prose-a:decoration-dotted prose-a:underline-offset-[5px] prose-a:opacity-80 py-4"
 >
   <p class="leading-loose">
     {`I'm`} <span class="font-bold tracking-tight">Pablo</span>, a fullstack web developer from Canary Islands with
