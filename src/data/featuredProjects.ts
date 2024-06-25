@@ -1,7 +1,6 @@
-import type { ComponentType } from 'svelte';
+import type { iProjects } from '@/types/featuredProjects.types';
 
 // Icons:
-import Nextjs from '@/icons/nextjs.svelte';
 import Remix from '@/icons/remix.svelte';
 import Svelteicon from '@/icons/svelteicon.svelte';
 import T3 from '@/icons/t3.svelte';
@@ -9,31 +8,30 @@ import Tauri from '@/icons/tauri.svelte';
 import Trpc from '@/icons/trpc.svelte';
 import {
   BoxIcon,
-  BoxSelectIcon,
   ComponentIcon,
   CrownIcon,
   LinkIcon,
+  MessageCircle,
   PenLineIcon
 } from 'lucide-svelte';
-
-export interface iProjects {
-  title: string;
-  description: string;
-  tags: string[];
-  url?: string;
-  githubUrl?: string;
-  icon?: string;
-  lucideIcon: ComponentType;
-  mainTech: iMainTech;
-}
-
-interface iMainTech {
-  title: string;
-  url: string;
-  svelteIcon: ComponentType;
-}
+import Huggingface from '@/icons/huggingface.svelte';
 
 export const featuredProjects: iProjects[] = [
+  {
+    title: 'chat-web-llm',
+    description: '🔭 Private AI chatbot built with @mlc-ai/web-llm library.',
+    tags: ['Hugging Face', 'AI', 'Svelte', 'shadcn-svelte'],
+    url: 'https://chat-web-llm.netlify.app',
+    githubUrl: 'https://github.com/pheralb/chat-web-llm',
+    icon: 'https://raw.githubusercontent.com/pheralb/chat-web-llm/blob/main/static/images/logo_png.png',
+    lucideIcon: MessageCircle,
+    latest: true,
+    mainTech: {
+      title: 'Hugging Face',
+      url: 'https://huggingface.co',
+      svelteIcon: Huggingface
+    }
+  },
   {
     title: 'slug',
     description: '🌱 An open-source URL shortener.',
@@ -101,20 +99,6 @@ export const featuredProjects: iProjects[] = [
       title: 'tRPC',
       url: 'https://trpc.io/',
       svelteIcon: Trpc
-    }
-  },
-  {
-    title: 'frame',
-    description: '🎨 Generate images with beautiful gradients.',
-    tags: ['Next.js', 'Tailwind', 'Dropzone'],
-    url: 'https://myframe.vercel.app/',
-    githubUrl: 'https://github.com/pheralb/frame',
-    icon: 'https://raw.githubusercontent.com/pheralb/frame/main/public/images/logo_svg.svg',
-    lucideIcon: BoxSelectIcon,
-    mainTech: {
-      title: 'Next.js',
-      url: 'https://nextjs.org/',
-      svelteIcon: Nextjs
     }
   }
 ];

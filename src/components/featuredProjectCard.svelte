@@ -3,6 +3,7 @@
   import { ArrowUpRight } from 'lucide-svelte';
   import Github from '@/icons/github.svelte';
   import Badge from '@/ui/badge/badge.svelte';
+  import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
 
   let div: HTMLDivElement;
   let focused = false;
@@ -45,6 +46,7 @@
   export let mainTechUrl: string | null;
   export let mainTechName: string | null;
   export let tags: string[];
+  export let latest: boolean | undefined;
   export const stars: number | undefined = 0;
 </script>
 
@@ -82,7 +84,7 @@
             <ArrowUpRight
               size={13}
               strokeWidth={2}
-              class="opacity-50 group-hover:opacity-100 group-hover:translate-x-[1.5px] duration-200"
+              class="opacity-50 duration-200 group-hover:translate-x-[1.5px] group-hover:opacity-100"
             />
           </a>
         {:else}
@@ -92,15 +94,20 @@
           <p class="font-medium">{title}</p>
         {/if}
       </div>
-      <a
-        href={githubUrl}
-        title={`View ${title} repository on GitHub`}
-        target="_blank"
-        rel="noopener"
-        class="opacity-75 transition-opacity duration-100 hover:opacity-100"
-      >
-        <Github height={16} />
-      </a>
+      <div class="flex items-center gap-2">
+        {#if latest}
+          <SpotlightBadge>latest</SpotlightBadge>
+        {/if}
+        <a
+          href={githubUrl}
+          title={`View ${title} repository on GitHub`}
+          target="_blank"
+          rel="noopener"
+          class="opacity-75 transition-opacity duration-100 hover:opacity-100"
+        >
+          <Github height={16} />
+        </a>
+      </div>
     </div>
     <p class="truncate text-sm dark:text-neutral-400">{description}</p>
     <div class="hidden items-center space-x-2 overflow-x-auto md:flex">

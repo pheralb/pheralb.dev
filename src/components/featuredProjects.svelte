@@ -31,6 +31,7 @@
         mainTechUrl={project.mainTech.url}
         mainTechName={project.mainTech.title}
         tags={project.tags}
+        latest={project.latest}
       />
     {/each}
   </div>
