@@ -19,7 +19,7 @@
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/pheralb/pheralb.dev',
+      url: 'https://github.com/pheralb',
       icon: Github
     }
   ];
