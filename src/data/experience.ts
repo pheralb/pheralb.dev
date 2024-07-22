@@ -1,12 +1,4 @@
-interface iExperience {
-  role: string;
-  aboutRole: string;
-  company: string;
-  companyUrl: string;
-  startDate: string;
-  endDate: string;
-  latest: boolean;
-}
+import type { iExperience } from '@/types/experience.type';
 
 export const experienceData: iExperience[] = [
   {
