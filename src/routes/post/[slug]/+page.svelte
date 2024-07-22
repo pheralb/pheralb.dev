@@ -1,8 +1,9 @@
 <script lang="ts">
-  import Badge from '@/ui/badge/badge.svelte';
-  import { routeAnimation } from '@/ui/shared';
   import { cn, formatDate } from '@/utils';
   import { ArrowUpRight, ClockIcon, TagIcon, TriangleAlertIcon } from 'lucide-svelte';
+
+  import Badge from '@/ui/badge/badge.svelte';
+  import { routeAnimation } from '@/ui/shared';
 
   export let data;
 </script>
@@ -37,17 +38,17 @@
       </div>
       <a
         href={`https://github.com/pheralb/pheralb.dev/blob/main/src/posts/${data.slug}.md`}
-        class="flex items-center space-x-1 text-neutral-600 transition-colors duration-200 ease-in-out hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+        class="flex items-center space-x-1 text-sm tracking-tight text-neutral-600 transition-colors duration-200 ease-in-out hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
         target="_blank"
         rel="noopener noreferrer"
       >
         <span>Edit on GitHub</span>
-        <ArrowUpRight size="14" />
+        <ArrowUpRight size="12" />
       </a>
     </div>
     {#if data.meta.writing}
       <div
-        class="flex items-center gap-2 rounded-md border border-neutral-300 bg-neutral-200/40 p-2 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-800/60 dark:text-neutral-300 text-sm"
+        class="flex items-center gap-2 rounded-md border border-neutral-300 bg-neutral-200/40 p-2 text-sm text-neutral-700 dark:border-neutral-800 dark:bg-neutral-800/60 dark:text-neutral-300"
       >
         <TriangleAlertIcon size={16} />
         <p class="text-pretty">
@@ -66,7 +67,8 @@
       'prose-a:decoration-neutral-400 prose-a:decoration-dotted prose-a:decoration-[1.5px] prose-a:underline-offset-[6px] hover:prose-a:opacity-80 dark:prose-a:decoration-neutral-400',
       'prose-pre:my-3',
       'prose-ol:mb-3 prose-ul:mb-3',
-      'prose-inline-code:rounded prose-inline-code:border prose-inline-code:border-neutral-300 prose-inline-code:bg-neutral-200/50 prose-inline-code:p-[2px] prose-inline-code:font-mono prose-inline-code:dark:border-neutral-800 prose-inline-code:dark:bg-neutral-800/50'
+      'prose-inline-code:rounded prose-inline-code:border prose-inline-code:border-neutral-300 prose-inline-code:bg-neutral-200/50 prose-inline-code:p-[2px] prose-inline-code:font-mono prose-inline-code:dark:border-neutral-800 prose-inline-code:dark:bg-neutral-800/50',
+      'prose-pre:rounded prose-pre:border prose-pre:border-neutral-300 prose-pre:dark:border-neutral-800 prose-pre:dark:bg-neutral-800/50'
     )}
   >
     <svelte:component this={data.content} />
