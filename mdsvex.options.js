@@ -1,11 +1,13 @@
 import { escapeSvelte } from 'mdsvex';
-import { getHighlighter } from 'shiki';
 
 // Rehype Plugins:
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeToc from '@jsdevtools/rehype-toc';
 import urls from 'rehype-urls';
+
+// Shiki Highlighter:
+import { getHighlighter } from './shiki.config.js';
 
 function processUrl(url, node) {
   if (node.tagName === 'a') {
@@ -22,7 +24,9 @@ const customizeTOC = (toc) => {
     const { children } = toc;
     const childrenOfChildren = children?.[0]?.children;
     if (!children?.length || !childrenOfChildren?.length) return null;
-  } catch (e) { /* empty */ }
+  } catch (e) {
+    return null;
+  }
   return {
     type: 'element',
     tagName: 'div',
@@ -35,15 +39,14 @@ const customizeTOC = (toc) => {
         children: [
           {
             type: 'text',
-            value: 'Table of Contents:',
-          },
-        ],
+            value: 'Table of Contents:'
+          }
+        ]
       },
-      ...(toc.children || []),
-    ],
+      ...(toc.children || [])
+    ]
   };
 };
-
 
 /** @type {import('mdsvex').MdsvexOptions} */
 export const mdsvexOptions = {
@@ -51,18 +54,22 @@ export const mdsvexOptions = {
   layout: {
     _: './src/components/mdsvex/md-components.svelte'
   },
-  rehypePlugins: [[urls, processUrl], rehypeSlug, rehypeAutolinkHeadings, [rehypeToc, { customizeTOC }]],
+  rehypePlugins: [
+    [urls, processUrl],
+    rehypeSlug,
+    rehypeAutolinkHeadings,
+    [rehypeToc, { customizeTOC }]
+  ],
   highlight: {
     highlighter: async (code, lang = 'text') => {
-      const highlighter = await getHighlighter({
-        themes: ['slack-ochin', 'poimandres'],
-        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx']
-      });
-      await highlighter.loadLanguage('javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx');
+      const highlighter = await getHighlighter();
       const html = escapeSvelte(
         highlighter.codeToHtml(code, {
           lang,
-          theme: 'poimandres'
+          themes: {
+            light: 'vitesse-light',
+            dark: 'vesper'
+          }
         })
       );
       return `{@html \`${html}\` }`;
