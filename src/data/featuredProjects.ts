@@ -14,22 +14,22 @@ import {
   MessageCircle,
   PenLineIcon
 } from 'lucide-svelte';
-import Huggingface from '@/icons/huggingface.svelte';
+import Turborepo from '@/icons/turborepo.svelte';
 
 export const featuredProjects: iProjects[] = [
   {
-    title: 'chat-web-llm',
-    description: '🔭 Private AI chatbot built with @mlc-ai/web-llm library.',
-    tags: ['Hugging Face', 'AI', 'Svelte', 'shadcn-svelte'],
-    url: 'https://chat-web-llm.netlify.app',
-    githubUrl: 'https://github.com/pheralb/chat-web-llm',
-    icon: 'https://raw.githubusercontent.com/pheralb/chat-web-llm/blob/main/static/images/logo_png.png',
+    title: 'pheralb/toast',
+    description: '🍞 An opinionated toast component for React.',
+    tags: ['Turborepo', 'Library', 'Remix', 'MDX'],
+    url: 'https://toast.pheralb.dev',
+    githubUrl: 'https://github.com/pheralb/toast',
+    icon: 'https://camo.githubusercontent.com/ab9939a4460fd63c2b7a6eb9d36d24260e8ab2917b0714f923c655542a63c76a/68747470733a2f2f746f6173742e70686572616c622e6465762f696d616765732f6c6f676f5f7376672e737667',
     lucideIcon: MessageCircle,
     latest: true,
     mainTech: {
-      title: 'Hugging Face',
-      url: 'https://huggingface.co',
-      svelteIcon: Huggingface
+      title: 'Turborepo',
+      url: 'https://turbo.build/repo',
+      svelteIcon: Turborepo
     }
   },
   {
