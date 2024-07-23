@@ -37,6 +37,12 @@ const config: Config = {
             },
             'code::after': {
               content: '""'
+            },
+            'h1 a': {
+              'text-decoration': 'none'
+            },
+            'h2 a': {
+              'text-decoration': 'none'
             }
           }
         },
@@ -53,9 +59,15 @@ const config: Config = {
         gambarino: ['Gambarino', ...defaultTheme.fontFamily.sans]
       },
       animation: {
-        shine: 'shine 2s linear infinite'
+        shine: 'shine 2s linear infinite',
+        gradient: 'gradient 8s linear infinite'
       },
       keyframes: {
+        gradient: {
+          to: {
+            backgroundPosition: 'var(--bg-size) 0'
+          }
+        },
         shine: {
           from: {
             backgroundPosition: '0 0'
