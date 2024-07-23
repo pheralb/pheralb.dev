@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cn, formatDate } from '@/utils';
-  import { ArrowUpRight, ClockIcon, TagIcon, TriangleAlertIcon } from 'lucide-svelte';
+  import { ArrowUpRight, CalendarIcon, TagIcon, TriangleAlertIcon } from 'lucide-svelte';
 
   import Badge from '@/ui/badge/badge.svelte';
   import { routeAnimation } from '@/ui/shared';
@@ -30,7 +30,7 @@
           <span>{data.meta.category}</span>
         </Badge>
         <Badge>
-          <ClockIcon size={12} />
+          <CalendarIcon size={12} />
           <time datetime={data.meta.date}>
             {formatDate(data.meta.date)}
           </time>

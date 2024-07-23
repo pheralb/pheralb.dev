@@ -57,7 +57,15 @@ export const mdsvexOptions = {
   rehypePlugins: [
     [urls, processUrl],
     rehypeSlug,
-    rehypeAutolinkHeadings,
+    [
+      rehypeAutolinkHeadings,
+      {
+        behavior: 'wrap',
+        properties: {
+          className: `before:content-['#'] before:absolute before:-ml-[1em] before:text-neutral-100/0 dark:hover:before:text-neutral-200/50 hover:before:text-neutral-900/50 pl-[1em] -ml-[1em]`
+        }
+      }
+    ],
     [rehypeToc, { customizeTOC }]
   ],
   highlight: {

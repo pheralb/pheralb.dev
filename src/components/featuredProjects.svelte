@@ -1,6 +1,7 @@
 <script lang="ts">
   import { featuredProjects } from '@/data/featuredProjects';
   import { ArrowRight } from 'lucide-svelte';
+
   import ProjectCard from './featuredProjectCard.svelte';
 </script>
 
@@ -9,7 +10,7 @@
     <h2 class="text-xl font-medium">Projects</h2>
     <a
       href="/projects"
-      class="group flex items-center space-x-2 text-sm font-medium text-neutral-500 dark:text-neutral-400 duration-100 hover:text-black dark:hover:text-white"
+      class="group flex items-center space-x-2 text-sm font-medium text-neutral-500 duration-100 hover:text-black dark:text-neutral-400 dark:hover:text-white"
     >
       <span>More</span>
       <ArrowRight
