@@ -1,14 +1,17 @@
 <script lang="ts">
+  import { mode } from 'mode-watcher';
   import type { ComponentType } from 'svelte';
   import { ArrowUpRight } from 'lucide-svelte';
   import Github from '@/icons/github.svelte';
   import Badge from '@/ui/badge/badge.svelte';
   import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
 
-  let div: HTMLDivElement;
+  let div: HTMLDivElement | undefined;
   let focused = false;
   let position = { x: 0, y: 0 };
   let opacity = 0;
+  let i: number = 0;
+  let positions: { x: number; y: number }[] = [{ x: 0, y: 0 }];
 
   const handleMouseMove = (e: MouseEvent) => {
     if (!div || focused) return;
@@ -17,6 +20,7 @@
       x: e.clientX - rect.left,
       y: e.clientY - rect.top
     };
+    positions[i] = position;
   };
 
   const handleFocus = () => {
@@ -58,14 +62,25 @@
   on:blur={handleBlur}
   on:mouseenter={handleMouseEnter}
   on:mouseleave={handleMouseLeave}
-  class="relative flex flex-col rounded-md border border-neutral-300 px-3 py-4 shadow-sm dark:border-neutral-800"
+  class="relative flex flex-col rounded-md border-[1px] border-neutral-300 px-3 py-4 shadow-sm dark:border-neutral-800"
 >
+  <input
+    aria-hidden="true"
+    class="pointer-events-none absolute left-0 top-0 z-10 h-full w-full cursor-default rounded-[0.310rem] border transition-opacity duration-500 placeholder:select-none
+    {$mode === 'dark' ? 'border-white/50' : 'border-black/50'}
+    "
+    style="
+      opacity: {opacity};
+      -webkit-mask-image: radial-gradient(30% 30px at {position.x}px {position.y}px, black 45%, transparent);
+      background-color: transparent;
+    "
+  />
   <div
-    class="pointer-events-none rounded-md absolute -inset-px opacity-0 transition duration-300"
-    style={`
-			opacity: ${opacity};
-			background: radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(97, 97, 97, 0.1), transparent 60%);
-		`}
+    class="pointer-events-none absolute -inset-px rounded-md opacity-0 transition duration-300"
+    style="
+      opacity: {opacity};
+      background: radial-gradient(600px circle at {position.x}px {position.y}px, rgba(97, 97, 97, 0.1), transparent 60%);
+    "
   />
   <div class="flex flex-col space-y-3">
     <div class="flex w-full items-center justify-between">
