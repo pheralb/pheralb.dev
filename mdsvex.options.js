@@ -7,7 +7,8 @@ import rehypeToc from '@jsdevtools/rehype-toc';
 import urls from 'rehype-urls';
 
 // Shiki Highlighter:
-import { getHighlighter } from './shiki.config.js';
+import { createHighlighter, makeSingletonHighlighter } from 'shiki/bundle/web';
+const getHighlighter = makeSingletonHighlighter(createHighlighter);
 
 function processUrl(url, node) {
   if (node.tagName === 'a') {
@@ -70,7 +71,10 @@ export const mdsvexOptions = {
   ],
   highlight: {
     highlighter: async (code, lang = 'text') => {
-      const highlighter = await getHighlighter();
+      const highlighter = await getHighlighter({
+        themes: ['vitesse-light', 'vesper'],
+        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx']
+      });
       const html = escapeSvelte(
         highlighter.codeToHtml(code, {
           lang,
