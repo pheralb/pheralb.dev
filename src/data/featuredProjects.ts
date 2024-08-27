@@ -19,12 +19,12 @@ import {
 
 export const featuredProjects: iProjects[] = [
   {
-    title: 'pheralb/toast',
+    title: 'toast',
     description: '🍞 A beautiful notification library for React.',
     tags: ['Turborepo', 'Library', 'Astro', 'MDX'],
     url: 'https://toast.pheralb.dev',
     githubUrl: 'https://github.com/pheralb/toast',
-    icon: 'https://camo.githubusercontent.com/ab9939a4460fd63c2b7a6eb9d36d24260e8ab2917b0714f923c655542a63c76a/68747470733a2f2f746f6173742e70686572616c622e6465762f696d616765732f6c6f676f5f7376672e737667',
+    icon: 'https://raw.githubusercontent.com/pheralb/toast/main/docs/public/images/logo_svg.svg',
     lucideIcon: MessageCircle,
     latest: true,
     mainTech: {
