@@ -2,6 +2,7 @@
 title: Remix v2 Snippets
 description: Code snippets for Remix.
 date: '2024-5-28'
+lastUpdated: '2024-9-26'
 category: 'Snippets'
 writing: false
 published: true
@@ -163,6 +164,8 @@ module.exports = {
 
 ## Dark mode with Tailwind CSS
 
+> 💡 Here we wil use ``remix-themes`` library, but you can create all utilities and providers manually. Check [remix/examples - dark mode](https://github.com/remix-run/examples/tree/main/dark-mode) repository.
+
 1. Install [**remix-themes**](https://github.com/abereghici/remix-themes) and [**clsx**](https://github.com/lukeed/clsx#readme):
 
 ```bash
@@ -299,4 +302,30 @@ export function ModeToggle() {
     </>
   );
 }
+```
+
+## Utility to check environment variables
+
+A utility to check if the environment variables are set in the `.env` file. It's like a [`t3/env`](https://github.com/t3-oss/t3-env) library:
+
+```ts
+function getRequiredEnvVarFromObj(
+  obj: Record<string, string | undefined>,
+  key: string,
+  devValue: string = `${key}-dev-value`
+) {
+  let value = devValue;
+  const envVal = obj[key];
+  if (envVal) {
+    value = envVal;
+  } else if (obj.NODE_ENV === "production") {
+    throw new Error(`${key} is a required env variable`);
+  }
+  return value;
+}
+
+export function getRequiredServerEnvVar(key: string, devValue?: string) {
+  return getRequiredEnvVarFromObj(process.env, key, devValue);
+}
+
 ```
