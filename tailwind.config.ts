@@ -43,6 +43,9 @@ const config: Config = {
             },
             'h2 a': {
               'text-decoration': 'none'
+            },
+            'blockquote': {
+              'font-style': 'normal'
             }
           }
         },
