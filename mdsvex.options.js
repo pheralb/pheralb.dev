@@ -8,6 +8,8 @@ import urls from 'rehype-urls';
 
 // Shiki Highlighter:
 import { createHighlighter, makeSingletonHighlighter } from 'shiki/bundle/web';
+
+// Highlighter Singleton:
 const getHighlighter = makeSingletonHighlighter(createHighlighter);
 
 function processUrl(url, node) {
@@ -72,15 +74,15 @@ export const mdsvexOptions = {
   highlight: {
     highlighter: async (code, lang = 'text') => {
       const highlighter = await getHighlighter({
-        themes: ['min-light', 'vesper'],
+        themes: ['one-light', 'one-dark-pro'],
         langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx']
       });
       const html = escapeSvelte(
         highlighter.codeToHtml(code, {
           lang,
           themes: {
-            light: 'min-light',
-            dark: 'vesper'
+            light: 'one-light',
+            dark: 'one-dark-pro'
           }
         })
       );
