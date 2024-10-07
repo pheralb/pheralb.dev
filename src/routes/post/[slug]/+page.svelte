@@ -1,6 +1,12 @@
 <script lang="ts">
   import { cn, formatDate } from '@/utils';
-  import { ArrowUpRight, CalendarIcon, TagIcon, TriangleAlertIcon } from 'lucide-svelte';
+  import {
+    ArrowUpRight,
+    CalendarIcon,
+    TagIcon,
+    TriangleAlertIcon,
+    Clock4Icon
+  } from 'lucide-svelte';
 
   import Badge from '@/ui/badge/badge.svelte';
   import { routeAnimation } from '@/ui/shared';
@@ -31,10 +37,18 @@
         </Badge>
         <Badge>
           <CalendarIcon size={12} />
-          <time datetime={data.meta.date}>
+          <time datetime={data.meta.date} title="Published">
             {formatDate(data.meta.date)}
           </time>
         </Badge>
+        {#if data.meta.lastUpdated}
+          <Badge>
+            <Clock4Icon size={12} />
+            <time datetime={data.meta.lastUpdated} title="Last updated">
+              {formatDate(data.meta.lastUpdated)}
+            </time>
+          </Badge>
+        {/if}
       </div>
       <a
         href={`https://github.com/pheralb/pheralb.dev/blob/main/src/posts/${data.slug}.md`}
