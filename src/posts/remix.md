@@ -2,11 +2,62 @@
 title: Remix v2 Snippets
 description: Code snippets for Remix.
 date: '2024-5-28'
-lastUpdated: '2024-9-26'
+lastUpdated: '2024-10-07'
 category: 'Snippets'
 writing: false
 published: true
 ---
+
+## Custom Alias
+
+When you create a new project with Remix, the default template installs the [`vite-tsconfig-paths`](https://www.npmjs.com/package/vite-tsconfig-paths) dependency so there is no need to configure it manually. If you want to configure it without the dependency, follow these steps:
+
+1. Install the types of Node.js:
+
+```bash
+pnpm i @types/node -E -D
+```
+
+2. In your `vite.config.ts` file, add the following:
+
+```ts
+import { vitePlugin as remix } from '@remix-run/dev';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'app') // 👈 /app or /src, your app directory.
+    }
+  },
+  plugins: [
+    remix({
+      future: {
+        v3_fetcherPersist: true,
+        v3_relativeSplatPath: true,
+        v3_throwAbortReason: true
+      }
+    }),
+    tsconfigPaths()
+  ]
+});
+```
+
+3. In your `tsconfig.json` file, add the following:
+
+```json
+{
+  "compilerOptions": {
+    // 👀 your other config...
+    "baseUrl": ".",
+    "paths": {
+      "@/": ["./app/*"] // 👈 /app or /src, your app directory.
+    }
+  }
+}
+```
+
+> 💡 If you're using VSCode, I recommend restart the editor to apply the changes.
 
 ## Import any CSS styles
 
@@ -28,32 +79,33 @@ and that the Vite compiler does not interpret `.css` files as paths:
 export default defineConfig({
   plugins: [
     remix({
-      ignoredRouteFiles: ["**/*.css"], // 👈
-    }),
-  ],
+      ignoredRouteFiles: ['**/*.css'] // 👈
+    })
+  ]
 });
 ```
 
 ## Routes
 
-A guide for managing routes in Remix v2:
+All your routes should be inside the `app/routes` folder:
 
 ```bash
 📂 app
   📂 routes
-   | - ⚛️ app.tsx -> layout that wraps all the paths of /app. You have to add <Outlet /> from @remix-run/react.
-   | - 🟦 action.set-theme.ts -> /action/set-theme. Exports a server-side ``action``. Ideal for use with <Form /> from @remix-run/react.
-   | - ⚛️ app._index.tsx -> /app (main page)
-   | - ⚛️ app.settings.tsx -> /app/settings
-   | - ⚛️ app.$username.tsx -> /app/pheralb o /app/midudev. 💡
-   | - ⚛️ root.tsx -> layout that wraps the entire application.
 ```
 
-- 💡 To obtain the *$username*: [remix.run/docs/en/main/route/loader#params](https://remix.run/docs/en/main/route/loader#params)
+| 📂  | File              | Description                                                                                                                                      |
+| --- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ⚛️  | app.tsx           | Layout that wraps all the paths of /app. You need to add [`<Outlet />`](https://remix.run/docs/en/main/components/outlet) from @remix-run/react. |
+| 🟦  | action.name.ts    | Route /action/name. Exports a server-side `action`.                                                                                              |
+| ⚛️  | app.\_index.tsx   | /app (main page)                                                                                                                                 |
+| ⚛️  | app.settings.tsx  | /app/settings                                                                                                                                    |
+| ⚛️  | app.$username.tsx | /app/pheralb or /app/midudev. To obtain the _$username_: [loader#params](https://remix.run/docs/en/main/route/loader#params)                     |
+| ⚛️  | root.tsx          | Layout that wraps the entire application.                                                                                                        |
 
 ## How to use Remix on Vercel
 
-1. Install ``@vercel/remix`` package:
+1. Install `@vercel/remix` package:
 
 ```bash
 pnpm i @vercel/remix -E
@@ -62,12 +114,12 @@ pnpm i @vercel/remix -E
 2. Add Vercel Vite Preset to your `vite.config.ts`:
 
 ```ts
-import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
+import { vitePlugin as remix } from '@remix-run/dev';
+import { defineConfig } from 'vite';
 
 // Plugins:
-import tsconfigPaths from "vite-tsconfig-paths";
-import { vercelPreset } from "@vercel/remix/vite"; // 👈
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { vercelPreset } from '@vercel/remix/vite'; // 👈
 
 export default defineConfig({
   plugins: [
@@ -76,33 +128,30 @@ export default defineConfig({
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-      },
+        v3_throwAbortReason: true
+      }
     }),
-    tsconfigPaths(),
-  ],
+    tsconfigPaths()
+  ]
 });
 ```
 
-3. Replace all ``@remix-run/node`` imports with ``@vercel/remix``. Example:
+3. Replace all `@remix-run/node` imports with `@vercel/remix`. Example:
 
 ```tsx
-import type { MetaFunction } from "@vercel/remix";
+import type { MetaFunction } from '@vercel/remix';
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
+  return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
 };
 ```
 
-- 💡 Check [``@vercel/remix`` documentation](https://vercel.com/docs/frameworks/remix).
+- 💡 Check [`@vercel/remix` documentation](https://vercel.com/docs/frameworks/remix).
 
 ## Install & configure Tailwind CSS with Prettier
 
 1. Install Tailwind CSS, Prettier & Autoprefixer:
-    
+
 ```bash
 pnpm i tailwindcss prettier prettier-plugin-tailwindcss autoprefixer -E -D
 ```
@@ -148,8 +197,8 @@ export default {
 export default {
   plugins: {
     tailwindcss: {},
-    autoprefixer: {},
-  },
+    autoprefixer: {}
+  }
 };
 ```
 
@@ -162,9 +211,9 @@ module.exports = {
 };
 ```
 
-## Dark mode with Tailwind CSS
+## Dark mode
 
-> 💡 Here we wil use ``remix-themes`` library, but you can create all utilities and providers manually. Check [remix/examples - dark mode](https://github.com/remix-run/examples/tree/main/dark-mode) repository.
+> 💡 Here we wil use `remix-themes` library, but you can create all utilities and providers manually. Check [remix/examples - dark mode](https://github.com/remix-run/examples/tree/main/dark-mode) repository.
 
 1. Install [**remix-themes**](https://github.com/abereghici/remix-themes) and [**clsx**](https://github.com/lukeed/clsx#readme):
 
@@ -176,7 +225,7 @@ pnpm i remix-themes clsx -E
 
 ```ts
 const config = {
-  darkMode: ['class'],
+  darkMode: ['class']
   //...
 } satisfies Config;
 ```
@@ -197,8 +246,8 @@ const sessionStorage = createCookieSessionStorage({
     httpOnly: true,
     sameSite: 'lax',
     secrets: ['s3cr3t'],
-    ...(isProduction ? { domain: 'my-website.com', secure: true } : {}), // 👈 Website URL.
-  },
+    ...(isProduction ? { domain: 'my-website.com', secure: true } : {}) // 👈 Website URL.
+  }
 });
 
 export const themeSessionResolver = createThemeSessionResolver(sessionStorage);
@@ -224,7 +273,7 @@ import { themeSessionResolver } from './sessions.server';
 export async function loader({ request }: LoaderFunctionArgs) {
   const { getTheme } = await themeSessionResolver(request);
   return {
-    theme: getTheme(),
+    theme: getTheme()
   };
 }
 ```
@@ -304,9 +353,44 @@ export function ModeToggle() {
 }
 ```
 
-## Utility to check environment variables
+## Utility to check environment variables (updated)
 
 A utility to check if the environment variables are set in the `.env` file. It's like a [`t3/env`](https://github.com/t3-oss/t3-env) library:
+
+- Install [Zod](https://github.com/colinhacks/zod):
+
+```bash
+pnpm i zod -E
+```
+
+- Create a `env.server.ts` file:
+
+```ts
+import * as z from 'zod';
+
+const environmentSchema = z.object({
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  MY_ENV_VARIABLE: z.string().min(1)
+});
+
+const environment = () => environmentSchema.parse(process.env);
+
+export { environment };
+```
+
+- Usage example with `loader`:
+
+```ts
+export function loader() {
+  return json({
+    publicKeys: {
+      MY_ENV_VARIABLE: environment().MY_ENV_VARIABLE
+    }
+  });
+}
+```
+
+> 💡 Other method without Zod:
 
 ```ts
 function getRequiredEnvVarFromObj(
@@ -318,7 +402,7 @@ function getRequiredEnvVarFromObj(
   const envVal = obj[key];
   if (envVal) {
     value = envVal;
-  } else if (obj.NODE_ENV === "production") {
+  } else if (obj.NODE_ENV === 'production') {
     throw new Error(`${key} is a required env variable`);
   }
   return value;
@@ -327,5 +411,4 @@ function getRequiredEnvVarFromObj(
 export function getRequiredServerEnvVar(key: string, devValue?: string) {
   return getRequiredEnvVarFromObj(process.env, key, devValue);
 }
-
 ```
