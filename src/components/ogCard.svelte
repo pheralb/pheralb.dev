@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let title = 'Hello, world!';
-  export let description = 'This is a description';
+  interface Props {
+    title?: string;
+    description?: string;
+  }
+
+  let { title = 'Hello, world!', description = 'This is a description' }: Props = $props();
 </script>
 
 <div class="container">

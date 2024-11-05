@@ -6,10 +6,10 @@
   import Badge from '@/ui/badge/badge.svelte';
   import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
 
-  let div: HTMLDivElement | undefined;
+  let div: HTMLDivElement | undefined = $state();
   let focused = false;
-  let position = { x: 0, y: 0 };
-  let opacity = 0;
+  let position = $state({ x: 0, y: 0 });
+  let opacity = $state(0);
   let i: number = 0;
   let positions: { x: number; y: number }[] = [{ x: 0, y: 0 }];
 
@@ -41,27 +41,42 @@
     opacity = 0;
   };
 
-  export let title: string;
-  export let description: string;
-  export let icon: string | undefined;
-  export let websiteUrl: string | undefined;
-  export let githubUrl: string | undefined;
-  export let mainTechIcon: ComponentType | null;
-  export let mainTechUrl: string | null;
-  export let mainTechName: string | null;
-  export let tags: string[];
-  export let latest: boolean | undefined;
+  interface Props {
+    title: string;
+    description: string;
+    icon: string | undefined;
+    websiteUrl: string | undefined;
+    githubUrl: string | undefined;
+    mainTechIcon: ComponentType | null;
+    mainTechUrl: string | null;
+    mainTechName: string | null;
+    tags: string[];
+    latest: boolean | undefined;
+  }
+
+  let {
+    title,
+    description,
+    icon,
+    websiteUrl,
+    githubUrl,
+    mainTechIcon,
+    mainTechUrl,
+    mainTechName,
+    tags,
+    latest
+  }: Props = $props();
   export const stars: number | undefined = 0;
 </script>
 
 <div
   role="contentinfo"
   bind:this={div}
-  on:mousemove={handleMouseMove}
-  on:focus={handleFocus}
-  on:blur={handleBlur}
-  on:mouseenter={handleMouseEnter}
-  on:mouseleave={handleMouseLeave}
+  onmousemove={handleMouseMove}
+  onfocus={handleFocus}
+  onblur={handleBlur}
+  onmouseenter={handleMouseEnter}
+  onmouseleave={handleMouseLeave}
   class="relative flex flex-col rounded-md border-[1px] border-neutral-300 px-3 py-4 shadow-sm dark:border-neutral-800"
 >
   <input
@@ -81,7 +96,7 @@
       opacity: {opacity};
       background: radial-gradient(600px circle at {position.x}px {position.y}px, rgba(97, 97, 97, 0.1), transparent 60%);
     "
-  />
+></div>
   <div class="flex flex-col space-y-3">
     <div class="flex w-full items-center justify-between">
       <div class="flex items-center space-x-[10px]">
@@ -127,8 +142,9 @@
     <p class="truncate text-sm dark:text-neutral-400">{description}</p>
     <div class="hidden items-center space-x-2 overflow-x-auto md:flex">
       {#if mainTechIcon}
+        {@const SvelteComponent = mainTechIcon}
         <a href={mainTechUrl} target="_blank" rel="noopener" class="mr-1" title={mainTechName}>
-          <svelte:component this={mainTechIcon} height={17} />
+          <SvelteComponent height={17} />
         </a>
       {/if}
       <div class="flex items-center space-x-1">

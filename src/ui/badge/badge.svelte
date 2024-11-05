@@ -1,7 +1,12 @@
 <script lang="ts">
   import { cn } from '@/utils';
 
-  export let extraClasses: string = '';
+  interface Props {
+    extraClasses?: string;
+    children?: import('svelte').Snippet;
+  }
+
+  let { extraClasses = '', children }: Props = $props();
 </script>
 
 <span
@@ -10,5 +15,5 @@
     extraClasses
   )}
 >
-  <slot />
+  {@render children?.()}
 </span>

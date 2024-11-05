@@ -4,8 +4,12 @@
   import { Sun, Moon } from 'lucide-svelte';
   import { mode, toggleMode } from 'mode-watcher';
 
-  export let iconSize = 20;
-  export let strokeWidth = 1.8;
+  interface Props {
+    iconSize?: number;
+    strokeWidth?: number;
+  }
+
+  let { iconSize = 20, strokeWidth = 1.8 }: Props = $props();
 </script>
 
 <Button

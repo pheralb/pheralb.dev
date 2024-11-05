@@ -11,7 +11,11 @@
   import Badge from '@/ui/badge/badge.svelte';
   import { routeAnimation } from '@/ui/shared';
 
-  export let data;
+  interface Props {
+    data: any;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -85,6 +89,6 @@
       'prose-pre:rounded prose-pre:border prose-pre:border-neutral-300 prose-pre:dark:border-none'
     )}
   >
-    <svelte:component this={data.content} />
+    <data.content />
   </article>
 </main>

@@ -6,14 +6,18 @@
   import { ArrowRight, ArrowUpRight, GitForkIcon, SearchIcon, StarIcon } from 'lucide-svelte';
   import { routeAnimation } from '@/ui/shared';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const repos = data.repos;
-  let searchTerm = '';
+  let searchTerm = $state('');
 
-  $: filteredRepos = searchTerm
+  let filteredRepos = $derived(searchTerm
     ? repos.filter((repo) => repo.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    : repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    : repos.sort((a, b) => b.stargazers_count - a.stargazers_count));
 
   const handleSearch = (e: Event) => {
     searchTerm = (e.target as HTMLInputElement).value.trim();

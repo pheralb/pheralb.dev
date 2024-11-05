@@ -5,7 +5,11 @@
 
   import { CalendarIcon, TagIcon, ChevronRightIcon } from 'lucide-svelte';
 
-  export let postData: Post[] = [];
+  interface Props {
+    postData?: Post[];
+  }
+
+  let { postData = [] }: Props = $props();
 </script>
 
 <section class="flex flex-col space-y-4">

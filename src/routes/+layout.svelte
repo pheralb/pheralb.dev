@@ -7,6 +7,11 @@
 
   // Layout:
   import Header from '@/components/header.svelte';
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
 
   // Current year:
   const currentYear = new Date().getFullYear();
@@ -17,7 +22,7 @@
 <main class="relative flex min-h-screen flex-col py-4 md:py-6">
   <Header />
   <div class="container max-w-4xl flex-1">
-    <slot />
+    {@render children?.()}
   </div>
   <footer
     class="container mt-10 flex max-w-4xl flex-col items-center justify-center space-y-1 md:flex-row md:justify-between md:space-y-0"

@@ -36,6 +36,7 @@
   </a>
   <div class="flex items-center space-x-1">
     {#each SocialLinks as { name, url, icon }, i}
+      {@const SvelteComponent = icon}
       <a
         href={url}
         title={name}
@@ -47,7 +48,7 @@
           class: 'opacity-80 transition-opacity duration-150 hover:opacity-100'
         })}
       >
-        <svelte:component this={icon} height={18} />
+        <SvelteComponent height={18} />
       </a>
     {/each}
     <ModdeToggle />

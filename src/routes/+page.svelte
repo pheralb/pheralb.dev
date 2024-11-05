@@ -8,7 +8,11 @@
   import Projects from '@/components/featuredProjects.svelte';
   import Posts from '@/components/posts.svelte';
 
-  export let data;
+  interface Props {
+    data: any;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <svelte:head>
