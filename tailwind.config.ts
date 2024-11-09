@@ -10,16 +10,6 @@ const config: Config = {
   darkMode: ['class'],
   content: ['./src/**/*.{html,js,svelte,ts}'],
   safelist: ['dark'],
-  plugins: [
-    twTypography,
-    twAnimate,
-    plugin(function ({ addVariant }) {
-      addVariant(
-        'prose-inline-code',
-        '&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))'
-      );
-    })
-  ],
   theme: {
     container: {
       center: true,
@@ -29,6 +19,11 @@ const config: Config = {
       }
     },
     extend: {
+      fontFamily: {
+        sans: ['Geist', ...defaultTheme.fontFamily.sans],
+        mono: ['GeistMono', ...defaultTheme.fontFamily.mono],
+        gambarino: ['Gambarino', ...defaultTheme.fontFamily.sans]
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -44,7 +39,7 @@ const config: Config = {
             'h2 a': {
               'text-decoration': 'none'
             },
-            'blockquote': {
+            blockquote: {
               'font-style': 'normal'
             }
           }
@@ -55,11 +50,6 @@ const config: Config = {
             'blockquote p:first-of-type::after': { content: 'none' }
           }
         }
-      },
-      fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
-        mono: ['GeistMono', ...defaultTheme.fontFamily.mono],
-        gambarino: ['Gambarino', ...defaultTheme.fontFamily.sans]
       },
       animation: {
         shine: 'shine 2s linear infinite',
@@ -81,7 +71,17 @@ const config: Config = {
         }
       }
     }
-  }
+  },
+  plugins: [
+    twTypography,
+    twAnimate,
+    plugin(function ({ addVariant }) {
+      addVariant(
+        'prose-inline-code',
+        '&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))'
+      );
+    })
+  ]
 };
 
 export default config;
