@@ -1,4 +1,5 @@
-import type { ComponentType } from 'svelte';
+import type { Icon } from 'lucide-svelte';
+import type { Component, ComponentType } from 'svelte';
 
 export interface iProjects {
   title: string;
@@ -7,7 +8,7 @@ export interface iProjects {
   url?: string;
   githubUrl?: string;
   icon?: string;
-  lucideIcon: ComponentType;
+  lucideIcon: ComponentType<Icon>;
   mainTech: iMainTech;
   latest?: boolean;
 }
@@ -15,5 +16,5 @@ export interface iProjects {
 export interface iMainTech {
   title: string;
   url: string;
-  svelteIcon: ComponentType;
+  svelteIcon: Component;
 }
