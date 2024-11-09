@@ -63,7 +63,7 @@ In our case, we will add [**One Dark Pro**](https://binaryify.github.io/OneDark-
 
 1. Create a new file called `onedarkpro.json` in the `src/` folder:
 
-```
+```bash
 📂 src
 |- 📂 theme
     |- 📄 onedarkpro.json
