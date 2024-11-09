@@ -28,6 +28,10 @@
       "destination": "https://www.linkedin.com/in/pheralb/"
     },
     {
+      "source": "/bs",
+      "destination": "https://bsky.app/profile/pheralb.dev"
+    },
+    {
       "source": "/gh",
       "destination": "https://github.com/pheralb"
     },
