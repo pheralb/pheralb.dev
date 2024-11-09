@@ -15,9 +15,11 @@
   const repos = data.repos;
   let searchTerm = $state('');
 
-  let filteredRepos = $derived(searchTerm
-    ? repos.filter((repo) => repo.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    : repos.sort((a, b) => b.stargazers_count - a.stargazers_count));
+  let filteredRepos = $derived(
+    searchTerm
+      ? repos.filter((repo) => repo.name.toLowerCase().includes(searchTerm.toLowerCase()))
+      : repos.sort((a, b) => b.stargazers_count - a.stargazers_count)
+  );
 
   const handleSearch = (e: Event) => {
     searchTerm = (e.target as HTMLInputElement).value.trim();
@@ -25,7 +27,16 @@
 </script>
 
 <svelte:head>
-  <title>Repositories - Pablo Hernández</title>
+  <title>Projects - Pablo Hernández</title>
+  <meta property="og:title" content="Pablo Hernández" />
+  <meta property="og:description" content="Building amazing things" />
+  <meta
+    name="image"
+    property="og:image"
+    content="https://pheralb.dev/images/readme_img_space.png"
+  />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 </svelte:head>
 
 <main class={routeAnimation}>
