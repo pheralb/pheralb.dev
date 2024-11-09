@@ -1,11 +1,7 @@
 <script lang="ts">
-  interface Props {
-    width?: number;
-    height?: number;
-    styles?: string;
-  }
+  import type { IconProps } from '@/types/icons.type';
 
-  let { width = 24, height = 24, styles = '' }: Props = $props();
+  let { width = 24, height = 24, styles = '' }: IconProps = $props();
 </script>
 
 <svg

@@ -45,7 +45,7 @@
           class="group flex items-center space-x-[4px] font-mono text-sm tracking-tight opacity-70 transition-opacity duration-100 hover:opacity-100"
         >
           <span>Read more</span>
-          <ChevronRightIcon size={16} class="group-hover:translate-x-[2px] duration-150" />
+          <ChevronRightIcon size={16} class="duration-150 group-hover:translate-x-[2px]" />
         </a>
       </div>
     </div>
