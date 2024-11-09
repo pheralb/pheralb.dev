@@ -1,56 +1,62 @@
 import type { RequestHandler } from './$types';
 
 import satori from 'satori';
-import { html as toReactNode } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
-
-// Main Svelte component:
-import OgCard from '@/components/ogCard.svelte';
+import { read } from '$app/server';
+import { render } from 'svelte/server';
 import { error } from '@sveltejs/kit';
+import { html as toReactNode } from 'satori-html';
 import { getSinglePost } from '@/server';
 
-// Size:
-const width = 1200;
+// Components & Fonts:
+import geistFont from './Geist-Medium.ttf?url';
+import Card from './og-card.svelte';
+
+// OG Size:
 const height = 630;
+const width = 1200;
 
-export const GET = (async ({ fetch, params }) => {
-  const post = await getSinglePost(params.slug);
+export const GET = async ({ params }: RequestHandler) => {
+  const fontSans = await read(geistFont).arrayBuffer();
+  const post = await getSinglePost(params.slug as string);
 
-  if (!post) {
-    return error(404, 'Post not found');
-  }
+  if (!post) error(404);
 
-  const title = post.title;
-  const description = post.description;
+  const result = render(Card, {
+    props: {
+      title: post.title,
+      description: post.description,
+      date: post.date
+    }
+  });
+  const element = toReactNode(`<head>${result.head}</head>${result.body}`);
 
-  // Fonts:
-  const interFontData = await fetch('/fonts/InterDisplay-Medium.ttf').then((res) =>
-    res.arrayBuffer()
-  );
-
-  //@ts-expect-error - ✨ Svelte component:
-  const result = OgCard.render({ title, description });
-  const markup = toReactNode(`${result.html}<style>${result.css.code}</style>`);
-
-  const svg = await satori(markup, {
-    width,
+  const svg = await satori(element, {
+    fonts: [
+      {
+        name: 'Geist-Medium',
+        data: fontSans,
+        style: 'normal',
+        weight: 600
+      }
+    ],
     height,
-    fonts: [{ name: 'InterMedium', data: interFontData, weight: 400, style: 'normal' }]
+    width
   });
 
   const resvg = new Resvg(svg, {
     fitTo: {
       mode: 'width',
-      value: +width
+      value: width
     }
   });
 
-  const png = resvg.render();
+  const image = resvg.render();
 
-  return new Response(png.asPng(), {
+  return new Response(image.asPng(), {
     headers: {
-      'Content-Type': 'image/png',
-      //'Cache-Control': 'public, max-age=604800, immutable'
+      'content-type': 'image/png',
+      'cache-control': 'public, max-age=600' // cache for 10 minutes
     }
   });
-}) satisfies RequestHandler;
+};
