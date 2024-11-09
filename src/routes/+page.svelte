@@ -22,7 +22,7 @@
   <meta
     name="image"
     property="og:image"
-    content="https://pheralb.dev/images/readme_img_space.png"
+    content="https://pheralb.dev/images/readme_img.png"
   />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
