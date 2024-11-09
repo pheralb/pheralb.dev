@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
   import { cn, formatDate } from '@/utils';
   import {
     ArrowUpRight,
@@ -11,11 +11,7 @@
   import Badge from '@/ui/badge/badge.svelte';
   import { routeAnimation } from '@/ui/shared';
 
-  interface Props {
-    data: any;
-  }
-
-  let { data }: Props = $props();
+  let { data } = $props();
 </script>
 
 <svelte:head>
@@ -23,6 +19,8 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content={`${data.meta.title} - Pablo Hernández`} />
   <meta property="og:description" content={data.meta.description} />
+  <meta name="twitter:image" content={`https://pheralb.dev/api/og/${data.slug}`} />
+  <meta name="og:image" content={`https://pheralb.dev/api/og/${data.slug}`} />
 </svelte:head>
 
 <main class={cn('flex flex-col space-y-5', routeAnimation)}>
