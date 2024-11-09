@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://pheralb.dev">
-<img src="static/images/readme_img_space.png">
+<img src="static/images/readme_img.png">
 </a>
 <p></p>
 </div>
@@ -9,15 +9,15 @@
     <a href="https://pheralb.dev" target="_blank">
         Website
     </a>
-    <span>&nbsp;⁘&nbsp;</span>
+    <span>&nbsp;❖&nbsp;</span>
     <a href="https://github.com/pheralb/pheralb.dev?tab=readme-ov-file#-stack">
         Stack
     </a>
-    <span>&nbsp;⁘&nbsp;</span>
+    <span>&nbsp;❖&nbsp;</span>
     <a href="https://github.com/pheralb/pheralb.dev?tab=readme-ov-file#-contributing">
         Contribute
     </a>
-    <span>&nbsp;⁘&nbsp;</span>
+    <span>&nbsp;❖&nbsp;</span>
     <a href="https://pheralb.dev/tw">
         X (formerly Twitter)
     </a>
@@ -28,19 +28,18 @@
 <div align="center">
 
 ![Svelte Badge](https://img.shields.io/badge/Sveltekit-FF3E00?logo=svelte&logoColor=fff&style=flat)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Fpheralb.dev%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/pheralb.dev/goto?ref=main)
+![Vercel Badge](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=fff&style=flat)
+![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
 ![GitHub stars](https://img.shields.io/github/stars/pheralb/pheralb.dev)
 ![GitHub issues](https://img.shields.io/github/issues/pheralb/pheralb.dev)
 ![GitHub forks](https://img.shields.io/github/forks/pheralb/pheralb.dev)
 ![GitHub PRs](https://img.shields.io/github/issues-pr/pheralb/pheralb.dev)
-![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
-
 </div>
 
 
 ## 📦 Stack
 
-- [**Sveltekit**](https://kit.svelte.dev/) - Web development, streamlined.
+- [**Sveltekit** + **Svelte 5**](https://svelte.dev/) - Web development for the rest of us.
 - [**Typescript**](https://www.typescriptlang.org/) - JavaScript with syntax for types.
 - [**mdsvex**](https://mdsvex.com/) - Markdown for Svelte apps.
 - [**Shiki**](https://github.com/shikijs/shiki) - A beautiful Syntax Highlighter.
