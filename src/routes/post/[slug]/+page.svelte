@@ -86,7 +86,7 @@
       'prose-pre:my-3',
       'prose-ol:mb-3 prose-ul:mb-3',
       'prose-inline-code:rounded prose-inline-code:border prose-inline-code:border-neutral-300 prose-inline-code:bg-neutral-200/50 prose-inline-code:p-[2px] prose-inline-code:font-mono prose-inline-code:dark:border-neutral-800 prose-inline-code:dark:bg-neutral-800/50',
-      'prose-pre:rounded prose-pre:border prose-pre:border-neutral-300 prose-pre:dark:border-none'
+      'prose-pre:rounded prose-pre:border prose-pre:border-neutral-300 prose-pre:dark:border-neutral-800'
     )}
   >
     <data.content />
