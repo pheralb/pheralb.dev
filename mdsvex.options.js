@@ -63,7 +63,7 @@ function addCopyButton(options = {}) {
       node.properties = node.properties || {};
       node.properties.style = 'position: relative;';
 
-      let iconSize = 16;
+      let iconSize = 14;
       let iconStrokeSize = 1.95;
 
       const button = h(
