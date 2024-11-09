@@ -11,6 +11,7 @@ export interface iProjects {
   lucideIcon: ComponentType<Icon>;
   mainTech: iMainTech;
   latest?: boolean;
+  updated?: boolean;
 }
 
 export interface iMainTech {

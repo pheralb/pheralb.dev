@@ -25,14 +25,14 @@
       <ProjectCard
         title={project.title}
         description={project.description}
-        icon={project.icon}
-        websiteUrl={project.url}
+        url={project.url}
         githubUrl={project.githubUrl}
-        mainTechIcon={project.mainTech.svelteIcon}
-        mainTechUrl={project.mainTech.url}
-        mainTechName={project.mainTech.title}
+        icon={project.icon}
         tags={project.tags}
+        mainTech={project.mainTech}
         latest={project.latest}
+        updated={project.updated}
+        lucideIcon={project.lucideIcon}
       />
     {/each}
   </div>

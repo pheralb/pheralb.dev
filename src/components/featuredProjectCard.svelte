@@ -1,12 +1,13 @@
 <script lang="ts">
   import type { Component } from 'svelte';
-  
+
   import { mode } from 'mode-watcher';
   import { ArrowUpRight } from 'lucide-svelte';
-  
+
   import Github from '@/icons/github.svelte';
   import Badge from '@/ui/badge/badge.svelte';
   import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
+  import type { iProjects } from '@/types/featuredProjects.types';
 
   let div: HTMLDivElement | undefined = $state();
   let focused = false;
@@ -43,31 +44,8 @@
     opacity = 0;
   };
 
-  interface Props {
-    title: string;
-    description: string;
-    icon: string | undefined;
-    websiteUrl: string | undefined;
-    githubUrl: string | undefined;
-    mainTechIcon: Component | null;
-    mainTechUrl: string | null;
-    mainTechName: string | null;
-    tags: string[];
-    latest: boolean | undefined;
-  }
-
-  let {
-    title,
-    description,
-    icon,
-    websiteUrl,
-    githubUrl,
-    mainTechIcon,
-    mainTechUrl,
-    mainTechName,
-    tags,
-    latest
-  }: Props = $props();
+  let { title, description, icon, url, githubUrl, mainTech, tags, latest, updated }: iProjects =
+    $props();
 </script>
 
 <div
@@ -101,12 +79,12 @@
   <div class="flex flex-col space-y-3">
     <div class="flex w-full items-center justify-between">
       <div class="flex items-center space-x-[10px]">
-        {#if websiteUrl}
+        {#if url}
           {#if icon}
             <img src={icon} alt={title} class="h-6 w-6" />
           {/if}
           <a
-            href={websiteUrl}
+            href={url}
             target="_blank"
             rel="noopener"
             class="group flex items-center gap-[6px] font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] hover:underline"
@@ -126,8 +104,10 @@
         {/if}
       </div>
       <div class="flex items-center gap-2">
-        {#if latest}
-          <SpotlightBadge>latest</SpotlightBadge>
+        {#if latest || updated}
+          <SpotlightBadge>
+            {latest ? 'latest' : 'updated'}
+          </SpotlightBadge>
         {/if}
         <a
           href={githubUrl}
@@ -142,9 +122,9 @@
     </div>
     <p class="truncate text-sm dark:text-neutral-400">{description}</p>
     <div class="hidden items-center space-x-2 overflow-x-auto md:flex">
-      {#if mainTechIcon}
-        {@const SvelteComponent = mainTechIcon}
-        <a href={mainTechUrl} target="_blank" rel="noopener" class="mr-1" title={mainTechName}>
+      {#if mainTech}
+        {@const SvelteComponent = mainTech.svelteIcon}
+        <a href={mainTech.url} target="_blank" rel="noopener" class="mr-1" title={mainTech.title}>
           <SvelteComponent height={17} />
         </a>
       {/if}

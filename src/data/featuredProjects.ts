@@ -19,6 +19,21 @@ import {
 
 export const featuredProjects: iProjects[] = [
   {
+    title: 'react-symbols',
+    description: '✨ Symbols Icons for React.',
+    tags: ['Remix', 'Typescript', 'Turborepo', 'Tailwind'],
+    url: 'https://react-symbols.vercel.app/',
+    githubUrl: 'https://github.com/pheralb/react-symbols',
+    icon: 'https://raw.githubusercontent.com/pheralb/react-symbols/main/website/public/images/logo_svg.svg',
+    lucideIcon: ComponentIcon,
+    updated: true,
+    mainTech: {
+      title: 'Remix',
+      url: 'https://remix.run/',
+      svelteIcon: Remix
+    }
+  },
+  {
     title: 'toast',
     description: '🍞 A beautiful notification library for React.',
     tags: ['Turborepo', 'Library', 'Astro', 'MDX'],
@@ -26,7 +41,6 @@ export const featuredProjects: iProjects[] = [
     githubUrl: 'https://github.com/pheralb/toast',
     icon: 'https://raw.githubusercontent.com/pheralb/toast/main/docs/public/images/logo_svg.svg',
     lucideIcon: MessageCircle,
-    latest: true,
     mainTech: {
       title: 'Astro',
       url: 'https://astro.build',
@@ -72,20 +86,6 @@ export const featuredProjects: iProjects[] = [
       title: 'Tauri',
       url: 'https://tauri.app/',
       svelteIcon: Tauri
-    }
-  },
-  {
-    title: 'react-symbols',
-    description: '✨ Symbols Icons for React.',
-    tags: ['Remix', 'Typescript', 'Turborepo', 'Tailwind'],
-    url: 'https://react-symbols.vercel.app/',
-    githubUrl: 'https://github.com/pheralb/react-symbols',
-    icon: 'https://raw.githubusercontent.com/pheralb/react-symbols/main/website/public/images/logo_svg.svg',
-    lucideIcon: ComponentIcon,
-    mainTech: {
-      title: 'Remix',
-      url: 'https://remix.run/',
-      svelteIcon: Remix
     }
   },
   {
