@@ -74,15 +74,16 @@ export const mdsvexOptions = {
   highlight: {
     highlighter: async (code, lang = 'text') => {
       const highlighter = await getHighlighter({
-        themes: ['vesper'],
-        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx']
+        themes: ['github-light', 'github-dark'],
+        langs: ['javascript', 'typescript', 'bash', 'json', 'jsx', 'css', 'tsx'],
       });
       const html = escapeSvelte(
         highlighter.codeToHtml(code, {
           lang,
+          keepBackground: false,
           themes: {
-            light: 'vesper',
-            dark: 'vesper'
+            light: 'github-light',
+            dark: 'github-dark'
           }
         })
       );
