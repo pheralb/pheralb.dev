@@ -36,14 +36,61 @@
 
 html .shiki,
 html .shiki span {
+  position: relative;
   background-color: transparent !important;
 }
 
 html.dark .shiki,
 html.dark .shiki span {
+  position: relative;
   color: var(--shiki-dark) !important;
   background-color: transparent !important;
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Shiki Copy Button */
+
+.shiki-copy-button-styles {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.shiki-copy-icon-colors {
+  color: #525252;
+}
+
+.shiki-copy-button-styles:hover .shiki-copy-icon-colors {
+  color: #171717;
+}
+
+html.dark .shiki-copy-icon-colors {
+  color: #a3a3a3;
+}
+
+html.dark .shiki-copy-button-styles:hover .shiki-copy-icon-colors {
+  color: #ffff;
+}
+
+.icon-copied-container {
+  display: none;
+}
+
+.icon-copy-container {
+  display: inline;
+}
+
+.shiki-copy-button-styles.copied .icon-copy-container {
+  display: none;
+}
+
+.shiki-copy-button-styles.copied .icon-copied-container {
+  display: inline;
 }
