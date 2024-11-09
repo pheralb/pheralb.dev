@@ -41,5 +41,4 @@
     font-weight: 600;
     opacity: 0.5;
   }
-
 </style>

@@ -1,7 +1,9 @@
 <script lang="ts">
+  import type { Component } from 'svelte';
+  
   import { mode } from 'mode-watcher';
-  import type { ComponentType } from 'svelte';
   import { ArrowUpRight } from 'lucide-svelte';
+  
   import Github from '@/icons/github.svelte';
   import Badge from '@/ui/badge/badge.svelte';
   import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
@@ -47,7 +49,7 @@
     icon: string | undefined;
     websiteUrl: string | undefined;
     githubUrl: string | undefined;
-    mainTechIcon: ComponentType | null;
+    mainTechIcon: Component | null;
     mainTechUrl: string | null;
     mainTechName: string | null;
     tags: string[];
@@ -66,7 +68,6 @@
     tags,
     latest
   }: Props = $props();
-  export const stars: number | undefined = 0;
 </script>
 
 <div
@@ -96,7 +97,7 @@
       opacity: {opacity};
       background: radial-gradient(600px circle at {position.x}px {position.y}px, rgba(97, 97, 97, 0.1), transparent 60%);
     "
-></div>
+  ></div>
   <div class="flex flex-col space-y-3">
     <div class="flex w-full items-center justify-between">
       <div class="flex items-center space-x-[10px]">

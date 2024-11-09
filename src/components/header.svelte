@@ -4,6 +4,7 @@
   import Github from '@/icons/github.svelte';
   import Linkedin from '@/icons/linkedin.svelte';
   import X from '@/icons/x.svelte';
+  import Bluesky from '@/icons/bluesky.svelte';
   import ModdeToggle from './modde-toggle.svelte';
 
   const SocialLinks = [
@@ -11,6 +12,11 @@
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/pheralb',
       icon: Linkedin
+    },
+    {
+      name: 'Bluesky',
+      url: 'https://bsky.app/profile/pheralb.dev',
+      icon: Bluesky
     },
     {
       name: 'Twitter',
