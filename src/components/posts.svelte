@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Post } from '@/types/post.type';
   import Badge from '@/ui/badge/badge.svelte';
-  import { formatDate } from '@/utils';
+  import { cn, formatDate } from '@/utils';
 
   import { CalendarIcon, TagIcon, ChevronRightIcon } from 'lucide-svelte';
 
@@ -12,7 +12,12 @@
   let { postData = [] }: Props = $props();
 </script>
 
-<section class="flex flex-col space-y-4">
+<section
+  class={cn(
+    'flex flex-col space-y-4',
+    'delay-300 duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards'
+  )}
+>
   <h2 class="text-xl font-medium">Posts</h2>
   {#each postData as post}
     <div class="w-full rounded-md border border-neutral-300 p-3 dark:border-neutral-800">

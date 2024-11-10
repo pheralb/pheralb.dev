@@ -1,10 +1,15 @@
 <script>
   import { experienceData } from '@/data/experience';
   import { cn } from '@/utils';
-  import { ArrowUpRight, Building2Icon, BuildingIcon } from 'lucide-svelte';
+  import { ArrowUpRight } from 'lucide-svelte';
 </script>
 
-<section class="flex flex-col space-y-4">
+<section
+  class={cn(
+    'flex flex-col space-y-4',
+    'delay-200 duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards'
+  )}
+>
   <div class="flex flex-col space-y-4">
     <h2 class="text-xl font-medium">Experience</h2>
   </div>
