@@ -16,7 +16,8 @@
     {
       name: 'Bluesky',
       url: 'https://bsky.app/profile/pheralb.dev',
-      icon: Bluesky
+      icon: Bluesky,
+      iconSize: 22
     },
     {
       name: 'Twitter',
@@ -41,7 +42,7 @@
     <span>pheralb.dev</span>
   </a>
   <div class="flex items-center space-x-1">
-    {#each SocialLinks as { name, url, icon }, i}
+    {#each SocialLinks as { name, url, icon, iconSize }, i}
       {@const SvelteComponent = icon}
       <a
         href={url}
@@ -54,7 +55,7 @@
           class: 'opacity-80 transition-opacity duration-150 hover:opacity-100'
         })}
       >
-        <SvelteComponent height={18} />
+        <SvelteComponent height={iconSize ? iconSize : 18} />
       </a>
     {/each}
     <ModdeToggle />
