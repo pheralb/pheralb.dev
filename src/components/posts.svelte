@@ -24,9 +24,13 @@
       <div class="mb-3 flex flex-col space-y-1">
         <a
           href={`/post/${post.slug}`}
-          class="text-md font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] duration-150 hover:underline hover:opacity-80 md:text-lg"
+          class="text-md flex items-center space-x-2 font-medium decoration-neutral-500 decoration-dotted underline-offset-[5px] duration-150 hover:underline hover:opacity-80 md:text-lg"
         >
-          {post.title}
+          <span>{post.title}</span>
+          <ChevronRightIcon
+            size={14}
+            class="block flex-shrink-0 text-neutral-500 dark:text-neutral-400 md:hidden"
+          />
         </a>
         <p class="text-pretty text-sm dark:text-neutral-400">
           {post.description}
@@ -47,7 +51,7 @@
         </div>
         <a
           href={`/post/${post.slug}`}
-          class="group flex items-center space-x-[4px] font-mono text-sm tracking-tight opacity-70 transition-opacity duration-100 hover:opacity-100"
+          class="group hidden items-center space-x-[4px] text-sm tracking-tight opacity-70 transition-opacity duration-100 hover:opacity-100 md:flex"
         >
           <span>Read more</span>
           <ChevronRightIcon size={16} class="duration-150 group-hover:translate-x-[2px]" />

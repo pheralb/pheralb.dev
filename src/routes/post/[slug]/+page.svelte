@@ -10,6 +10,7 @@
 
   import Badge from '@/ui/badge/badge.svelte';
   import { routeAnimation } from '@/ui/shared';
+  import { buttonVariants } from '@/ui/button';
 
   let { data } = $props();
 </script>
@@ -30,8 +31,12 @@
     </h2>
     <p class="text-neutral-800 dark:text-neutral-400">{data.meta.description}</p>
   </div>
-  <div class="flex flex-col space-y-2 border-b border-neutral-300 py-5 dark:border-neutral-800">
-    <div class="flex items-center justify-between text-sm">
+  <div
+    class="flex flex-col space-y-2 border-b border-neutral-300 py-3 dark:border-neutral-800 md:py-5"
+  >
+    <div
+      class="flex flex-col space-x-0 space-y-4 text-sm md:flex-row md:justify-between md:space-x-2 md:space-y-0"
+    >
       <div class="flex items-center space-x-[6px]">
         <Badge>
           <TagIcon size={12} />
@@ -54,12 +59,16 @@
       </div>
       <a
         href={`https://github.com/pheralb/pheralb.dev/blob/main/src/posts/${data.slug}.md`}
-        class="flex items-center space-x-1 text-sm tracking-tight text-neutral-600 transition-colors duration-200 ease-in-out hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+        class={buttonVariants({
+          variant: 'outline',
+          size: 'sm',
+          className: 'flex items-center space-x-1 bg-transparent hover:bg-neutral-200/60 shadow-none'
+        })}
         target="_blank"
         rel="noopener noreferrer"
       >
         <span>Edit on GitHub</span>
-        <ArrowUpRight size="12" />
+        <ArrowUpRight size="12" class="dark:text-neutral-400 text-neutral-500" />
       </a>
     </div>
     {#if data.meta.writing}
