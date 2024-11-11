@@ -61,8 +61,6 @@ function addCopyButton(options = {}) {
     name: 'shiki-copy-button',
     pre(node) {
       node.properties = node.properties || {};
-      node.properties.style = 'position: relative;';
-
       let iconSize = 14;
       let iconStrokeSize = 1.95;
 
@@ -79,7 +77,6 @@ function addCopyButton(options = {}) {
           `
         },
         [
-          // Copy icon:
           h('span', { class: 'icon-copy-container' }, [
             h(
               'svg',
@@ -111,7 +108,6 @@ function addCopyButton(options = {}) {
               ]
             )
           ]),
-          // Copied icon:
           h('span', { class: 'icon-copied-container' }, [
             h(
               'svg',
@@ -134,7 +130,12 @@ function addCopyButton(options = {}) {
         ]
       );
 
-      node.children.push(button);
+      const wrapper = h('div', { class: 'code-container', style: 'position: relative;' }, [
+        node,
+        button
+      ]);
+
+      return wrapper;
     }
   };
 }

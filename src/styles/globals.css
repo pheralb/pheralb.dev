@@ -52,15 +52,20 @@ html.dark .shiki span {
 
 /* Shiki Copy Button */
 
+.code-container {
+  position: relative;
+}
+
 .shiki-copy-button-styles {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 7px;
   padding: 4px;
   background: transparent;
   border: none;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
+  z-index: 10;
 }
 
 .shiki-copy-icon-colors {
