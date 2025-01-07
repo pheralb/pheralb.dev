@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { cn } from '@/utils';
-  import { routeAnimation } from '@/ui/shared';
-
   // Sections:
   import About from '@/components/about.svelte';
   import Experience from '@/components/experience.svelte';
