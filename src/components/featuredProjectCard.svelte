@@ -1,13 +1,12 @@
 <script lang="ts">
-  import type { Component } from 'svelte';
-
+  import type { iProjects } from '@/types/featuredProjects.types';
+  
   import { mode } from 'mode-watcher';
   import { ArrowUpRight } from 'lucide-svelte';
 
   import Github from '@/icons/github.svelte';
   import Badge from '@/ui/badge/badge.svelte';
   import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
-  import type { iProjects } from '@/types/featuredProjects.types';
 
   let div: HTMLDivElement | undefined = $state();
   let focused = false;
