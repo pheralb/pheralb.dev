@@ -1,21 +1,26 @@
-import type { Icon } from 'lucide-svelte';
-import type { Component, ComponentType } from 'svelte';
+export type Stack =
+  | 'Next.js'
+  | 'Tailwind CSS'
+  | 'React'
+  | 'Remix'
+  | 'Svelte'
+  | 'Tauri'
+  | 'Turborepo'
+  | 'T3 Stack'
+  | 'Hono'
+  | 'Upstash'
+  | 'Astro'
+  | 'Trpc'
+  | 'Prisma'
+  | 'shadcn/ui';
 
 export interface iProjects {
   title: string;
   description: string;
-  tags: string[];
+  tags: Stack[];
   url?: string;
   githubUrl?: string;
   icon?: string;
-  lucideIcon: ComponentType<Icon>;
-  mainTech: iMainTech;
   latest?: boolean;
   updated?: boolean;
-}
-
-export interface iMainTech {
-  title: string;
-  url: string;
-  svelteIcon: Component;
 }

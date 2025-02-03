@@ -1,12 +1,13 @@
 <script lang="ts">
   import type { iProjects } from '@/types/featuredProjects.types';
-  
+
   import { mode } from 'mode-watcher';
   import { ArrowUpRight } from 'lucide-svelte';
 
   import Github from '@/icons/github.svelte';
   import Badge from '@/ui/badge/badge.svelte';
   import SpotlightBadge from '@/ui/badge/spotlight-badge.svelte';
+  import { technologies } from '@/data/technologies';
 
   let div: HTMLDivElement | undefined = $state();
   let focused = false;
@@ -43,8 +44,7 @@
     opacity = 0;
   };
 
-  let { title, description, icon, url, githubUrl, mainTech, tags, latest, updated }: iProjects =
-    $props();
+  let { title, description, icon, url, githubUrl, tags, latest, updated }: iProjects = $props();
 </script>
 
 <div
@@ -120,20 +120,15 @@
       </div>
     </div>
     <p class="truncate text-sm dark:text-neutral-400">{description}</p>
-    <div class="hidden items-center space-x-2 overflow-x-auto md:flex">
-      {#if mainTech}
-        {@const SvelteComponent = mainTech.svelteIcon}
-        <a href={mainTech.url} target="_blank" rel="noopener" class="mr-1" title={mainTech.title}>
-          <SvelteComponent height={17} />
-        </a>
-      {/if}
-      <div class="flex items-center space-x-1">
-        {#each tags as tag}
+    <div class="flex items-center space-x-1 overflow-y-auto">
+      {#each tags as tag}
+        {#each technologies.filter((s) => s.stack === tag) as { icon: Icon }}
           <Badge>
-            {tag}
+            <Icon width={14} height={14} class="flex-shrink-0" />
+            <span>{tag}</span>
           </Badge>
         {/each}
-      </div>
+      {/each}
     </div>
   </div>
 </div>
